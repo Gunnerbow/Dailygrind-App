@@ -1,0 +1,2346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>DailyGrind</title>
+<link rel="apple-touch-icon" href="data:image/png;base64,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" />
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAEuUlEQVR4nLVWWWxUZRQ+51/u3DttIdCoRKDS0taWlqVl34U2IMEFjYYoGmrQYDSGRBK3BxUVBRMefJEH4YHFEAw+GBIhatAgYVFDIFQhgJbStIIkMu3M3GXu/c/xYcCNudOpiX9ObnLzn/Od/Oc7G454dTX8n0cB0VD0ERGAgQEg/ynBQUl6N+EhF0ZSoEBRookA4lKEiRSK3wf6185pf7x1Xn82IwG5BEPFXFKIBIq0504YNebdB1ZduNq78/g3xhgAHvT5Q3gBEG19bK1WesLocSsmTe/PZhTgoIalOCCF4vpA/8tLHlpQP8n1XQRct2i5LZUxZnAHTFRcBGAqk55f1/Taskdzoa+VDEJvek3D8uapqWxGAA5mzlxEkDmKomG2s3XVs5bSRISA+cCva7vPloqMKY4ggKiISMCBTKZj9uKmMTVe4EkhAEAKEYbB7NrGlrE1ru8JhiIIg3AQRVGF7XTMbSMyQvyV+xEZIfQ99U25XCAYinPAcSIA0262vXHyxKrxYRQIxDw6MyMgALc1TtZCGTJFQZhihQiY1yxYAjfjnkeXUgpEMuHU6rq7Km/zgwCB40BiQyQYXN9rqRrf3twahX4++syslUq7rhQiCMPhZcPnjG8IgmJRigsRCcDAdTvmtycsOzQGAAwZy3IOnfx+2frnDFGekvbmFg5DZGCimBAVph7T2czMu5tXL1wahoGUkoi0Sly+0vv0pg3HTxzd/cXnCcvxA/fBafNm1jelsxkBGANVMH+JmGjjyo4Kp9xQhDfaNDz13huXenv0iJFb9u7yfBcRhiXLN67syDeSUutAMGQ9r7W6fmHTlDD0pZCRMZbl7D/y9aHjRyoqhllan+v65buzZ/KPWNg0pbW6PusVLogCHCBAFASzahuUtCJjAEAKyWze37NDKM3MApFywcETRwEwjEIlrVm1DVEQIEBBDgqxb2j0yMp8XhpjLMvetv/TY6dOJsvKDJEh0k5yz5cH+q5dsS0bAEaPrARDMd00Jn/DKGIABtZap9Kpd3ZsU5bFRPlktW27u7vrg30fa51ggDCM4nAU3zIyGRgYLvT24I2yss5e6uy99pttWXSz3ogIE4ljnWeYIhTqQl8PMLDhW9EKzGTDRmvrcOfpgeyAbVkArJVERAD8c9Dnf6QQDDiQSR3uPK21ZfKd9ZaJ9m/e2Ziktrp6uncdOmhp2/OzTdV1dWOrXM+1tEZEgUIpRZ63uHW6EHLHVwe6erqT2mJjSq0DExnHdt7c+dFP3Rcdu1wrveX5F7UU/anrQZjzcn7q174Z02a88uSaH7svvrV7u2M7Jio8GDB5/7zCw1oI3/erbh+17/VNLbWNAPDt6R8279p+7nKXk7BXzF/09jMvnPr5/MMbXuq5dtW2bYrZrzC5fG7BCwCQQriBX2476x95YlXb0po7q/IEA0Aqk/nws082793pBr6TsE389obJZXPi7gBYCBmZyM9mKysrJ46rrbpjlJLq0tW+k+fPplLX7bJyJRWRAcBYB869s2LvABgAAaUQuSgMggCMAWCQKpFIWEobIgbGoktksdWRb3w5IpIoyp0k5IcaMzFHUfR3tf/i4J/O2JSiV8jBkLbrIZ8/ADv3BRhtDjnJAAAAAElFTkSuQmCC" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="DailyGrind" />
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --card: #FFFFFF;
+    --ink: #1F2421;
+    --ink-soft: #5C6B62;
+    --ink-faint: #93A198;
+    --accent: #0F6E56;
+    --accent-soft: #E1F5EE;
+    --line: #E4E2D8;
+    --danger: #A32D2D;
+    --danger-soft: #FCEBEB;
+    --radius: 10px;
+    --mono: 'SF Mono', 'Menlo', 'Consolas', monospace;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  html[data-theme="dark"] {
+    --bg: #15181A;
+    --card: #1E2224;
+    --ink: #ECEDE9;
+    --ink-soft: #A8B3AC;
+    --ink-faint: #6C7871;
+    --accent: #2FBE9B;
+    --accent-soft: #1B3A33;
+    --line: #2E3335;
+    --danger: #E08585;
+    --danger-soft: #3A2323;
+  }
+  html { transition: background-color 0.15s; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    padding-bottom: 3rem;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 520px; margin: 0 auto; padding: 1.25rem 1rem 2rem; }
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
+  .brand { display: flex; align-items: center; gap: 8px; }
+  .brandMark {
+    width: 30px; height: 30px; border-radius: 9px;
+    background: linear-gradient(135deg, var(--accent-soft), var(--card));
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  }
+  .brandMark svg { width: 17px; height: 17px; }
+  header h1 { font-size: 18px; font-weight: 600; margin: 0; letter-spacing: -0.01em; color: var(--ink-soft); }
+  header h1 .grindPart { color: var(--accent); font-weight: 700; }
+  .dateNav { display: flex; align-items: center; gap: 2px; }
+  .dateNav button {
+    width: 40px; height: 40px; border-radius: 50%; border: none;
+    background: var(--card); color: var(--ink-soft); font-size: 16px;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  }
+  .dateNav span { font-size: 13px; color: var(--ink-soft); min-width: 92px; text-align: center; font-family: var(--mono); }
+
+  .tabsWrap { position: relative; margin-bottom: 1rem; }
+  .tabsWrap::after {
+    content: ''; position: absolute; top: 4px; right: 0; bottom: 4px; width: 28px;
+    background: linear-gradient(to right, transparent, var(--card));
+    pointer-events: none; border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  nav.tabs {
+    display: flex; background: var(--card); border-radius: var(--radius);
+    padding: 4px; margin-bottom: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  nav.tabs::-webkit-scrollbar { display: none; }
+  nav.tabs button {
+    flex: 0 0 auto; border: none; background: transparent; padding: 8px 14px;
+    font-size: 13px; font-weight: 500; color: var(--ink-faint); border-radius: 7px; cursor: pointer;
+    white-space: nowrap;
+  }
+  nav.tabs button.active { background: var(--accent-soft); color: var(--accent); }
+
+  .card {
+    background: var(--card); border-radius: 12px; padding: 1rem 1.1rem;
+    margin-bottom: 0.85rem; box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  }
+  .card h2 { font-size: 13px; font-weight: 600; margin: 0 0 0.7rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.04em; }
+
+  .statRow { display: flex; gap: 12px; }
+  .stat { flex: 1; }
+  .stat .num { font-family: var(--mono); font-size: 22px; font-weight: 600; }
+  .stat .label { font-size: 11.5px; color: var(--ink-faint); margin-top: 2px; }
+
+  .heroCard { text-align: center; padding-top: 1.4rem; padding-bottom: 1.4rem; }
+  .heroCard .heroLabel { font-size: 12px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 4px; }
+  .heroCard .heroNum { font-family: var(--mono); font-size: 44px; font-weight: 700; line-height: 1.1; color: var(--ink); }
+  .heroCard .heroSub { font-size: 13px; color: var(--ink-soft); margin: 6px 0 0; }
+  .heroCard .bar { max-width: 260px; margin: 0.9rem auto 0; }
+
+  .secondaryRow { display: flex; flex-wrap: wrap; gap: 10px 8px; }
+  .secondaryStat { flex: 1; min-width: 30%; text-align: center; background: var(--bg); border-radius: 8px; padding: 8px 4px; }
+  .secondaryStat .num { font-family: var(--mono); font-size: 15px; font-weight: 600; }
+  .secondaryStat .label { font-size: 10px; color: var(--ink-faint); margin-top: 1px; }
+
+  .subtleCard { padding: 0.85rem 1.1rem; }
+  .subtleCard h2 { font-size: 11.5px; margin-bottom: 0.5rem; }
+  .subtleCard .statRow .stat .num { font-size: 17px; }
+
+  .bar { height: 7px; border-radius: 4px; background: var(--line); overflow: hidden; margin-top: 0.7rem; }
+  .bar > div { height: 100%; background: var(--accent); transition: width 0.2s; }
+
+  input, select {
+    font-family: var(--sans); font-size: 16px; padding: 8px 10px;
+    border: 1px solid var(--line); border-radius: 7px; background: #fff; color: var(--ink);
+    width: 100%;
+  }
+  input:focus, select:focus { outline: none; border-color: var(--accent); }
+  label.small { font-size: 11.5px; color: var(--ink-faint); display: block; margin-bottom: 4px; }
+
+  .field { margin-bottom: 0.6rem; }
+  .row2 { display: flex; gap: 8px; }
+  .row2 > div { flex: 1; }
+
+  button.primary {
+    width: 100%; padding: 10px; background: var(--accent); color: #fff; border: none;
+    border-radius: 7px; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 0.4rem;
+  }
+  button.primary:active { opacity: 0.85; }
+  button.ghost {
+    width: 100%; padding: 9px; background: transparent; color: var(--ink-soft);
+    border: 1px solid var(--line); border-radius: 7px; font-size: 13px; cursor: pointer;
+  }
+  button.ghost.toggleActive { background: var(--accent-soft); color: var(--accent); border-color: var(--accent-soft); font-weight: 600; }
+
+  .errorMsg { font-size: 12.5px; color: var(--danger); margin: -2px 0 8px; display: none; }
+
+  .entry {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 13.5px;
+  }
+  .entry:last-child { border-bottom: none; }
+  .entry .meta { color: var(--ink-faint); font-size: 11.5px; margin-top: 1px; }
+  .entry .right { display: flex; align-items: center; gap: 10px; }
+  .entry .cals { font-family: var(--mono); color: var(--ink-soft); }
+  .delBtn { border: none; background: none; color: var(--ink-faint); cursor: pointer; font-size: 16px; padding: 8px; min-width: 32px; min-height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+  .empty { text-align: center; color: var(--ink-faint); font-size: 13px; padding: 1rem 0; }
+
+  .toast {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    background: rgba(20,22,20,0.94); color: #fff; padding: 8px 16px; border-radius: 20px;
+    font-size: 13px; opacity: 0; pointer-events: none; transition: opacity 0.25s;
+    max-width: 90%; text-align: center; display: flex; align-items: center; gap: 12px;
+  }
+  .toast.show { opacity: 1; pointer-events: auto; }
+  .toast button#toastUndoBtn {
+    background: none; border: none; color: var(--accent); font-weight: 600;
+    font-size: 13px; cursor: pointer; padding: 0; width: auto;
+  }
+
+  .macroToggle { font-size: 12.5px; color: var(--accent); cursor: pointer; margin: 4px 0 8px; display: inline-block; }
+  .hidden { display: none !important; }
+
+  .histRow { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; }
+  .histRow:last-child { border-bottom: none; }
+  .histRow .d { color: var(--ink-soft); font-family: var(--mono); font-size: 12.5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <span class="brandMark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2c1 3-1 4.5-2 6-1.5 2-2 3.5-2 5.2 0 3.2 2.7 5.8 6 5.8s6-2.6 6-5.8c0-2.5-1.3-4-2.5-5.4-.3 1.6-1.2 2.4-1.9 2-.7-.4-.5-1.4-.1-2.3C16.5 5 15 3 12 2Z" fill="var(--accent)"/>
+          <path d="M12 11c.4 1.2-.3 1.9-.9 2.6-.6.8-.9 1.4-.9 2.1 0 1.3 1.1 2.3 2.4 2.3s2.4-1 2.4-2.3c0-.8-.4-1.4-.9-2-.1.6-.5.9-.8.7-.3-.1-.2-.5 0-.9-.6-.7-1.1-1.5-1.3-2.5Z" fill="var(--card)"/>
+        </svg>
+      </span>
+      <h1>Daily<span class="grindPart">Grind</span></h1>
+    </div>
+    <div class="dateNav">
+      <button id="prevDay" aria-label="Previous day">&#8249;</button>
+      <span id="dateLabel"></span>
+      <button id="nextDay" aria-label="Next day">&#8250;</button>
+    </div>
+  </header>
+
+  <div class="tabsWrap">
+  <nav class="tabs">
+    <button data-tab="home" class="active">Home</button>
+    <button data-tab="food">Food</button>
+    <button data-tab="weight">Weight</button>
+    <button data-tab="workout">Workout</button>
+    <button data-tab="plan">Plan</button>
+    <button data-tab="progress">Progress</button>
+    <button data-tab="history">History</button>
+    <button data-tab="data">Data</button>
+  </nav>
+  </div>
+
+  <!-- HOME TAB -->
+  <section id="tab-home">
+    <div class="card">
+      <p id="homeDateTime" style="font-size:12.5px;color:var(--ink-faint);margin:0 0 5px;font-family:var(--mono);"></p>
+      <p id="homeMotivation" style="font-size:14px;font-weight:500;margin:0;line-height:1.45;"></p>
+      <p id="homeStreak" style="font-size:12.5px;color:var(--accent);margin:6px 0 0;font-weight:500;"></p>
+      <p id="homeBackupReminder" style="font-size:12px;color:var(--ink-faint);margin:6px 0 0;display:none;"></p>
+    </div>
+
+    <div class="card heroCard">
+      <p class="heroLabel">Net calories today</p>
+      <div class="heroNum" id="homeNetCals">0</div>
+      <p class="heroSub" id="homeCalsLabel">calories in</p>
+      <div class="bar"><div id="homeCalBar" style="width:0%"></div></div>
+    </div>
+
+    <div class="card">
+      <div class="secondaryRow">
+        <div class="secondaryStat"><div class="num" id="homeCals">0</div><div class="label">in</div></div>
+        <div class="secondaryStat"><div class="num" id="homeBurned">0</div><div class="label">burned</div></div>
+        <div class="secondaryStat"><div class="num" id="homeWeight">&mdash;</div><div class="label" id="homeWeightLabel">weight</div></div>
+        <div class="secondaryStat"><div class="num" id="homeSteps">&mdash;</div><div class="label">net steps</div></div>
+        <div class="secondaryStat"><div class="num" id="homeGoalWeight">&mdash;</div><div class="label">goal wt</div></div>
+        <div class="secondaryStat"><div class="num" id="homeToGoal">&mdash;</div><div class="label" id="homeToGoalLabel">lb to goal</div></div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-soft);margin:10px 0 0;" id="homeProjection"></p>
+    </div>
+
+    <div class="card">
+      <h2>Today's workout</h2>
+      <div id="homeWorkoutSummary" style="font-size:14px;color:var(--ink-soft);"></div>
+      <p id="homePlanLine" style="font-size:13px;color:var(--ink-faint);margin:8px 0 0;"></p>
+      <button class="ghost hidden" id="homeLogPlanBtn" type="button" style="margin-top:8px;">Log today's planned workout</button>
+    </div>
+
+    <div class="card">
+      <h2>Quick add</h2>
+      <div style="display:flex;gap:8px;">
+        <button class="ghost" id="quickFood" style="flex:1;" type="button">+ Food</button>
+        <button class="ghost" id="quickWeight" style="flex:1;" type="button">+ Weight</button>
+        <button class="ghost" id="quickWorkout" style="flex:1;" type="button">+ Workout</button>
+      </div>
+    </div>
+
+    <div class="card subtleCard">
+      <h2>This week</h2>
+      <div class="statRow" style="flex-wrap:wrap;gap:10px;">
+        <div class="stat" style="min-width:45%;"><div class="num" id="weekWorkouts">&mdash;</div><div class="label">workouts done / planned</div></div>
+        <div class="stat" style="min-width:45%;"><div class="num" id="weekAvgCals">&mdash;</div><div class="label" id="weekAvgCalsLabel">avg calories logged</div></div>
+        <div class="stat" style="min-width:45%;"><div class="num" id="weekTotalCals">&mdash;</div><div class="label">calories logged (total)</div></div>
+        <div class="stat" style="min-width:45%;"><div class="num" id="weekTotalBurned">&mdash;</div><div class="label">calories burned (total)</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOD TAB -->
+  <section id="tab-food" class="hidden">
+    <div class="card">
+      <h2>Today's total</h2>
+      <div class="statRow">
+        <div class="stat"><div class="num" id="totalCals">0</div><div class="label">calories in</div></div>
+        <div class="stat"><div class="num" id="netCals">0</div><div class="label">net (in &minus; burned)</div></div>
+      </div>
+      <div class="bar"><div id="progressBar" style="width:0%"></div></div>
+    </div>
+
+    <div class="card">
+      <h2>Trend</h2>
+      <canvas id="calorieChart" style="width:100%;height:150px;display:block;"></canvas>
+      <p class="empty hidden" id="calorieChartEmpty">Log food on a few more days to see a trend.</p>
+    </div>
+
+    <div class="card" id="favoritesCard" style="display:none;">
+      <h2>Favorites</h2>
+      <div id="favoritesList" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+    </div>
+
+    <div class="card">
+      <h2 id="addFoodHeading">Add food</h2>
+      <div class="row2">
+        <div class="field">
+          <label class="small">Food or meal</label>
+          <input type="text" id="foodInput" list="foodOptions" placeholder="Grilled chicken salad" />
+          <datalist id="foodOptions"></datalist>
+          <p style="font-size:11.5px;color:var(--ink-faint);margin:4px 0 0;" id="lastLoggedFoodHint"></p>
+        </div>
+      </div>
+      <div class="row2">
+        <div class="field"><label class="small">Calories</label><input type="number" id="calInput" min="0" placeholder="450" /></div>
+      </div>
+      <span class="macroToggle" id="macroToggle">+ add macros (optional)</span>
+      <div id="macroFields" class="hidden">
+        <div class="row2">
+          <div class="field"><label class="small">Protein (g)</label><input type="number" id="proteinInput" min="0" /></div>
+          <div class="field"><label class="small">Carbs (g)</label><input type="number" id="carbInput" min="0" /></div>
+          <div class="field"><label class="small">Fat (g)</label><input type="number" id="fatInput" min="0" /></div>
+        </div>
+      </div>
+      <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-soft);margin:2px 0 10px;">
+        <input type="checkbox" id="saveFavoriteCheck" style="width:auto;" /> Save as favorite
+      </label>
+      <p class="errorMsg" id="foodError"></p>
+      <button class="primary" id="addFoodBtn">Add entry</button>
+      <button class="ghost hidden" id="cancelFoodEditBtn" type="button" style="margin-top:8px;">Cancel edit</button>
+    </div>
+
+    <div class="card">
+      <h2>Entries</h2>
+      <div id="foodList"></div>
+      <p class="empty hidden" id="foodEmpty">No food logged for this day.</p>
+    </div>
+
+    <div class="card">
+      <h2>Daily goal</h2>
+      <input type="number" id="goalInput" placeholder="e.g. 2000" min="0" />
+    </div>
+  </section>
+
+  <!-- WEIGHT TAB -->
+  <section id="tab-weight" class="hidden">
+    <div class="card">
+      <h2>Goal</h2>
+      <div class="row2">
+        <div class="field"><label class="small" id="goalWeightFieldLabel">Goal weight (lb)</label><input type="number" id="goalWeightInput" min="0" step="0.1" placeholder="155" /></div>
+        <div class="field"><label class="small">Goal date</label><input type="date" id="goalDateInput" /></div>
+      </div>
+      <p class="errorMsg" id="goalError"></p>
+      <button class="primary" id="saveGoalBtn">Save goal</button>
+      <p style="font-size:12px;color:var(--ink-faint);margin-top:8px;" id="goalHint"></p>
+    </div>
+    <div class="card">
+      <h2>Today's weight</h2>
+      <div class="field"><label class="small" id="weightFieldLabel">Weight (lb)</label><input type="number" id="weightInput" min="0" step="0.1" /></div>
+      <p class="errorMsg" id="weightError"></p>
+      <button class="primary" id="saveWeightBtn">Save weight</button>
+      <p style="font-size:12px;color:var(--ink-faint);margin-top:8px;">Used to calculate calories burned during workouts.</p>
+    </div>
+    <div class="card">
+      <h2>Today's steps</h2>
+      <div class="field"><label class="small">Steps (total for the day, e.g. from your Health app)</label><input type="number" id="stepsInput" min="0" step="1" placeholder="8000" /></div>
+      <p class="errorMsg" id="stepsError"></p>
+      <button class="primary" id="saveStepsBtn">Save steps</button>
+      <p style="font-size:12px;color:var(--ink-faint);margin-top:8px;" id="stepsNote">Steps beyond a logged workout now count toward your calorie burn (see below).</p>
+    </div>
+    <div class="card">
+      <h2>Steps beyond your logged workout</h2>
+      <div class="statRow">
+        <div class="stat"><div class="num" id="netStepsNum">&mdash;</div><div class="label">net steps today</div></div>
+        <div class="stat"><div class="num" id="netStepsCals">&mdash;</div><div class="label">est. calories burned</div></div>
+      </div>
+      <p style="font-size:12px;color:var(--ink-faint);margin-top:8px;" id="netStepsHint">Enter today's total steps above to see this.</p>
+    </div>
+    <div class="card">
+      <h2>Trend</h2>
+      <canvas id="weightChart" style="width:100%;height:150px;display:block;"></canvas>
+      <p class="empty hidden" id="weightChartEmpty">Log a few more weights to see a trend.</p>
+    </div>
+    <div class="card">
+      <h2>Weight history</h2>
+      <div id="weightList"></div>
+      <p class="empty hidden" id="weightEmpty">No weight entries yet.</p>
+    </div>
+  </section>
+
+  <!-- WORKOUT TAB -->
+  <section id="tab-workout" class="hidden">
+    <div class="card">
+      <h2>Log workout</h2>
+      <div class="field">
+        <label class="small">Type</label>
+        <select id="workoutType">
+          <option value="strength">Strength training</option>
+          <option value="walking">Walking</option>
+          <optgroup label="Road bike">
+            <option value="road_easy">Road bike &ndash; easy</option>
+            <option value="road_moderate">Road bike &ndash; moderate</option>
+            <option value="road_vigorous">Road bike &ndash; vigorous</option>
+          </optgroup>
+          <optgroup label="Spin bike">
+            <option value="spin">Spin bike</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="field" id="simpleDurationField">
+        <label class="small">Duration (minutes)</label>
+        <input type="number" id="durationInput" min="0" placeholder="45" />
+      </div>
+
+      <div id="spinSegmentBuilder" style="display:none;">
+        <div class="row2">
+          <div class="field"><label class="small">Resistance (1&ndash;100)</label><input type="number" id="segResistance" min="1" max="100" placeholder="50" /></div>
+          <div class="field"><label class="small">Minutes at this level</label><input type="number" id="segMinutes" min="0" placeholder="20" /></div>
+        </div>
+        <button class="ghost" id="addSegmentBtn" type="button">+ Add block</button>
+        <div id="segmentList" style="margin-top:8px;"></div>
+        <p style="font-size:12px;color:var(--ink-faint);margin:8px 0 0;" id="segTotalLabel"></p>
+      </div>
+
+      <div id="strengthExerciseBuilder" style="display:none;">
+        <div class="field">
+          <label class="small">Preload a routine</label>
+          <select id="preloadRoutineSelect">
+            <option value="">Choose a routine&hellip;</option>
+          </select>
+        </div>
+        <div id="plannedExerciseChips" style="display:none;margin-bottom:10px;">
+          <p style="font-size:11.5px;color:var(--ink-faint);margin:0 0 6px;" id="plannedExerciseChipsLabel">Today's planned exercises &mdash; tap to fill in</p>
+          <div id="plannedExerciseChipsInner" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
+        </div>
+        <div class="field">
+          <label class="small">Exercise</label>
+          <input type="text" id="exName" list="exerciseOptions" placeholder="e.g. Goblet squat" />
+          <datalist id="exerciseOptions"></datalist>
+          <p style="font-size:11.5px;color:var(--ink-faint);margin:4px 0 0;" id="lastLoggedHint"></p>
+        </div>
+        <div class="row2">
+          <div class="field"><label class="small" id="exWeightFieldLabel">Weight (lb)</label><input type="number" id="exWeight" min="0" step="0.5" placeholder="35" /></div>
+          <div class="field"><label class="small">Sets</label><input type="number" id="exSets" min="0" placeholder="3" /></div>
+          <div class="field"><label class="small">Reps</label><input type="number" id="exReps" min="0" placeholder="10" /></div>
+        </div>
+        <button class="ghost" id="addExerciseBtn" type="button">+ Add exercise</button>
+        <div id="exerciseList" style="margin-top:8px;"></div>
+      </div>
+
+      <p class="errorMsg" id="workoutError"></p>
+      <button class="primary" id="addWorkoutBtn">Add workout</button>
+      <button class="ghost hidden" id="cancelWorkoutEditBtn" type="button" style="margin-top:8px;">Cancel edit</button>
+      <p style="font-size:12px;color:var(--ink-faint);margin-top:8px;">Uses your most recent logged weight. Estimate only.</p>
+    </div>
+    <div class="card">
+      <h2>Today's workouts</h2>
+      <div id="workoutList"></div>
+      <p class="empty hidden" id="workoutEmpty">No workouts logged for this day.</p>
+    </div>
+  </section>
+
+  <!-- PLAN TAB -->
+  <section id="tab-plan" class="hidden">
+    <div class="card">
+      <h2>Weekly plan</h2>
+      <div id="weeklyPlanList"></div>
+    </div>
+    <div class="card">
+      <h2>Routines</h2>
+      <div id="routinesList"></div>
+      <div class="row2" style="margin-top:8px;">
+        <div class="field"><label class="small">New routine name</label><input type="text" id="newRoutineName" placeholder="e.g. Day C" /></div>
+      </div>
+      <button class="ghost" id="addRoutineBtn" type="button">+ Add routine</button>
+    </div>
+    <div class="card">
+      <h2>Exercise library</h2>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 10px;">Browse common exercises and tap to add them to your saved list &mdash; they'll then show up as suggestions everywhere you log or build a routine.</p>
+      <div class="field"><label class="small">Category</label><select id="libraryCategorySelect"></select></div>
+      <div id="libraryList" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;"></div>
+    </div>
+  </section>
+
+  <!-- PROGRESS TAB -->
+  <section id="tab-progress" class="hidden">
+    <div class="card">
+      <h2>Exercise</h2>
+      <select id="progressExerciseSelect"></select>
+    </div>
+    <div class="card">
+      <h2>Personal best</h2>
+      <div id="progressBest"></div>
+    </div>
+    <div class="card">
+      <h2>History</h2>
+      <div id="progressList"></div>
+      <p class="empty hidden" id="progressEmpty">No logs yet for this exercise.</p>
+    </div>
+  </section>
+
+  <!-- HISTORY TAB -->
+  <section id="tab-history" class="hidden">
+    <div class="card">
+      <h2>History</h2>
+      <div class="field">
+        <label class="small">Show</label>
+        <select id="historyRangeSelect">
+          <option value="14">Last 14 days</option>
+          <option value="30">Last 30 days</option>
+          <option value="90">Last 90 days</option>
+          <option value="180">Last 180 days</option>
+          <option value="365">Last year</option>
+          <option value="all">All time</option>
+        </select>
+      </div>
+      <div id="historyList"></div>
+      <p class="empty hidden" id="historyEmpty">No history yet &mdash; start logging.</p>
+    </div>
+  </section>
+
+
+  <!-- DATA TAB -->
+  <section id="tab-data" class="hidden">
+    <div class="card">
+      <h2>Export</h2>
+      <p style="font-size:13px;color:var(--ink-soft);margin:0 0 10px;">Download all your data as a backup file. Keep it somewhere safe, or move it to another device.</p>
+      <p style="font-size:12.5px;margin:0 0 10px;" id="exportStatus"></p>
+      <button class="primary" id="exportBtn">Export data (.json)</button>
+      <button class="ghost" id="exportCsvBtn" type="button" style="margin-top:8px;">Export summary (.csv)</button>
+      <p style="font-size:11.5px;color:var(--ink-faint);margin-top:8px;">The CSV is a day-by-day summary (weight, steps, calories) for your own spreadsheet use &mdash; the JSON backup above is the full, restorable copy.</p>
+    </div>
+
+    <div class="card">
+      <h2>Appearance &amp; units</h2>
+      <div class="field">
+        <label class="small">Theme</label>
+        <div style="display:flex;gap:8px;">
+          <button class="ghost" id="themeLightBtn" type="button" style="flex:1;">Light</button>
+          <button class="ghost" id="themeDarkBtn" type="button" style="flex:1;">Dark</button>
+        </div>
+      </div>
+      <div class="field" style="margin-top:10px;">
+        <label class="small">Weight units</label>
+        <div style="display:flex;gap:8px;">
+          <button class="ghost" id="unitsLbBtn" type="button" style="flex:1;">lb</button>
+          <button class="ghost" id="unitsKgBtn" type="button" style="flex:1;">kg</button>
+        </div>
+      </div>
+      <p style="font-size:11.5px;color:var(--ink-faint);margin:10px 0 0;">Your data is always stored in pounds internally &mdash; this only changes how weight is displayed.</p>
+    </div>
+
+    <div class="card">
+      <h2 id="iosGuideToggle" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;">
+        <span>Set up automatic backups (iPhone)</span>
+        <span id="iosGuideChevron" style="color:var(--ink-faint);font-size:11px;">&#9660;</span>
+      </h2>
+      <div id="iosGuideBody" class="hidden">
+        <p style="font-size:12.5px;color:var(--ink-soft);margin:0 0 10px;">
+          A one-time setup so every export saves straight to a folder of your choice, with no picker or prompt each time.
+        </p>
+        <div style="display:flex;gap:10px;margin-bottom:12px;">
+          <span style="font-family:var(--mono);font-weight:700;color:var(--accent);font-size:13px;flex:0 0 18px;">1</span>
+          <p style="font-size:13px;color:var(--ink);margin:0;">Open the <strong>Files</strong> app and create a new folder &mdash; e.g. "DailyGrind backups".</p>
+        </div>
+        <div style="display:flex;gap:10px;margin-bottom:12px;">
+          <span style="font-family:var(--mono);font-weight:700;color:var(--accent);font-size:13px;flex:0 0 18px;">2</span>
+          <p style="font-size:13px;color:var(--ink);margin:0;">Go to <strong>Settings &rarr; Apps &rarr; Safari &rarr; Downloads</strong> (on older iOS, <strong>Settings &rarr; Safari &rarr; Downloads</strong>), and set that folder as the default download location instead of "Ask Each Time".</p>
+        </div>
+        <div style="display:flex;gap:10px;margin-bottom:4px;">
+          <span style="font-family:var(--mono);font-weight:700;color:var(--accent);font-size:13px;flex:0 0 18px;">3</span>
+          <p style="font-size:13px;color:var(--ink);margin:0;">From then on, tapping "Export data" above should save directly to that folder automatically.</p>
+        </div>
+        <p style="font-size:12px;color:var(--ink-faint);margin:12px 0 0;">
+          This is an iOS-level setting, not something the app controls directly &mdash; it should work whether you open the app in Safari or from your Home Screen icon, but worth confirming once on your device. If a download ever still prompts you, double-check the Safari Downloads setting above.
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Import</h2>
+      <p style="font-size:13px;color:var(--ink-soft);margin:0 0 10px;">Restore from a previously exported file. This replaces all current data on this device.</p>
+      <input type="file" id="importFile" accept="application/json" style="margin-bottom:8px;" />
+      <p class="errorMsg" id="importError"></p>
+      <button class="ghost" id="importBtn">Import data</button>
+    </div>
+  </section>
+
+  <div class="toast" id="toast"><span id="toastMsg"></span><button id="toastUndoBtn" class="hidden" type="button">Undo</button></div>
+</div>
+
+<script>
+(function() {
+  var STORAGE_KEY = 'dailyLogApp_v1';
+  var THEME_KEY = 'dailyLogApp_theme';
+  var UNITS_KEY = 'dailyLogApp_units';
+  var currentTheme = 'light';
+  var currentUnits = 'lb';
+  try { currentTheme = localStorage.getItem(THEME_KEY) || 'light'; } catch (e) {}
+  try { currentUnits = localStorage.getItem(UNITS_KEY) || 'lb'; } catch (e) {}
+
+  function dispW(lb) {
+    if (lb == null) return lb;
+    return currentUnits === 'kg' ? Math.round((lb / 2.2046226218) * 10) / 10 : lb;
+  }
+  function toLb(displayVal) {
+    if (displayVal == null || displayVal === '') return null;
+    var n = parseFloat(displayVal);
+    if (isNaN(n)) return NaN;
+    return currentUnits === 'kg' ? Math.round((n * 2.2046226218) * 10) / 10 : n;
+  }
+  function unitLabel() { return currentUnits === 'kg' ? 'kg' : 'lb'; }
+
+  function applyTheme(theme) {
+    currentTheme = theme;
+    document.documentElement.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
+    try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+    var lightBtn = document.getElementById('themeLightBtn');
+    var darkBtn = document.getElementById('themeDarkBtn');
+    if (lightBtn && darkBtn) {
+      lightBtn.classList.toggle('toggleActive', theme === 'light');
+      darkBtn.classList.toggle('toggleActive', theme === 'dark');
+    }
+  }
+  function applyUnits(units, skipRerender) {
+    currentUnits = units;
+    try { localStorage.setItem(UNITS_KEY, units); } catch (e) {}
+    var lbBtn = document.getElementById('unitsLbBtn');
+    var kgBtn = document.getElementById('unitsKgBtn');
+    if (lbBtn && kgBtn) {
+      lbBtn.classList.toggle('toggleActive', units === 'lb');
+      kgBtn.classList.toggle('toggleActive', units === 'kg');
+    }
+    document.querySelectorAll('label.small').forEach(function() {}); // no-op, placeholder for future label refresh hooks
+    var weightLabel = document.getElementById('weightFieldLabel');
+    var goalWeightLabel = document.getElementById('goalWeightFieldLabel');
+    var exWeightLabel = document.getElementById('exWeightFieldLabel');
+    if (weightLabel) weightLabel.textContent = 'Weight (' + unitLabel() + ')';
+    if (goalWeightLabel) goalWeightLabel.textContent = 'Goal weight (' + unitLabel() + ')';
+    if (exWeightLabel) exWeightLabel.textContent = 'Weight (' + unitLabel() + ')';
+    if (!skipRerender) renderDay();
+  }
+
+  var STEPS_PER_MIN_WALK = 100; // assumed moderate walking cadence, used only to net out overlap with manual step entries
+  var MET = {
+    strength: 5.0,
+    walking: 3.5,
+    road_easy: 6.8, road_moderate: 8.0, road_vigorous: 10.0,
+    spin: 7.0
+  };
+  var LABELS = {
+    strength: 'Strength training',
+    walking: 'Walking',
+    road_easy: 'Road bike (easy)', road_moderate: 'Road bike (moderate)', road_vigorous: 'Road bike (vigorous)',
+    spin: 'Spin bike'
+  };
+
+  var DEFAULT_EXERCISES = [
+    'Goblet squat', 'Dumbbell floor press', 'Bent-over row', 'B-stance RDL', 'Plank', 'Calf raise',
+    'Dumbbell sumo squat', 'Overhead press', 'Single-arm row', 'Hip thrust', 'Basic crunch', 'Reverse fly'
+  ];
+  var EXERCISE_LIBRARY = {
+    'Legs': ['Barbell back squat', 'Front squat', 'Leg press', 'Romanian deadlift', 'Walking lunge', 'Leg extension', 'Leg curl', 'Bulgarian split squat', 'Hip thrust', 'Calf raise'],
+    'Chest': ['Barbell bench press', 'Incline bench press', 'Dumbbell chest press', 'Chest fly', 'Push-up', 'Cable crossover'],
+    'Back': ['Deadlift', 'Pull-up', 'Lat pulldown', 'Seated cable row', 'Bent-over row', 'T-bar row', 'Face pull'],
+    'Shoulders': ['Overhead press', 'Dumbbell shoulder press', 'Lateral raise', 'Front raise', 'Upright row', 'Arnold press'],
+    'Arms': ['Barbell curl', 'Dumbbell curl', 'Hammer curl', 'Tricep pushdown', 'Overhead tricep extension', 'Skull crusher', 'Dip'],
+    'Core': ['Plank', 'Hanging leg raise', 'Cable crunch', 'Russian twist', 'Ab wheel rollout', 'Side plank']
+  };
+  var MOTIVATIONAL_MESSAGES = [
+    'Small steps every day add up to big changes.',
+    'You don\u2019t have to be perfect, just consistent.',
+    'Progress isn\u2019t always visible on the scale \u2014 keep going.',
+    'Today is another rep in the long game.',
+    'The best workout is the one you actually do.',
+    'You\u2019ve already come further than you think.',
+    'Discipline is choosing what you want most over what you want now.',
+    'One good decision today makes the next one easier.',
+    'Consistency beats intensity over the long run.',
+    'Show up for yourself today, even in a small way.',
+    'Every log entry is a vote for the person you\u2019re becoming.',
+    'Rest days count too \u2014 recovery is part of the plan.',
+    'You don\u2019t need motivation, you need a habit.',
+    'Slow progress is still progress.',
+    'Focus on the process, the results will follow.',
+    'Your only competition is who you were yesterday.',
+    'A plateau is just a plan waiting for a small adjustment.',
+    'Trust the process, even on the hard days.',
+    'What you do consistently matters more than what you do occasionally.',
+    'Energy in, energy out \u2014 keep the balance in view.',
+    'Strength is built one session at a time.',
+    'You can\u2019t out-train a bad week, but you can start a good one today.',
+    'Celebrate the small wins \u2014 they add up.',
+    'Your future self is thankful for the habits you build today.',
+    'Momentum starts with one logged entry.',
+    'Every workout is a deposit in your health.',
+    'Fatigue is temporary, quitting is permanent.',
+    'The hardest part is showing up \u2014 you already did that.',
+    'Setbacks are data, not failure.',
+    'Keep the promise you made to yourself.',
+    'Better is better, even if it\u2019s not perfect.',
+    'You\u2019re not starting over, you\u2019re continuing.',
+    'Log it, learn from it, move on.',
+    'Habits compound quietly until they don\u2019t.',
+    'The goal is progress, not perfection.',
+    'Today\u2019s effort is tomorrow\u2019s strength.',
+    'You showed up. That\u2019s the whole game.',
+    'Every rep counts, even the ones that feel hard.',
+    'Consistency is a skill \u2014 you\u2019re practicing it right now.',
+    'Small, boring, repeatable actions win in the end.',
+    'Your body adapts to what you consistently ask of it.',
+    'Give today\u2019s effort, not yesterday\u2019s excuse.',
+    'Keep your promises to yourself \u2014 they matter most.',
+    'You\u2019re building something that lasts.',
+    'One day at a time, one log at a time.'
+  ];
+  function motivationForDate(date) {
+    var utcMidnight = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+    var dayIndex = Math.floor(utcMidnight / 86400000);
+    var idx = ((dayIndex % MOTIVATIONAL_MESSAGES.length) + MOTIVATIONAL_MESSAGES.length) % MOTIVATIONAL_MESSAGES.length;
+    return MOTIVATIONAL_MESSAGES[idx];
+  }
+  var DEFAULT_ROUTINES = [
+    { id: 'dayA', name: 'Day A (Strength)', exercises: ['Goblet squat', 'Dumbbell floor press', 'Bent-over row', 'B-stance RDL', 'Plank', 'Calf raise'] },
+    { id: 'dayB', name: 'Day B (Strength)', exercises: ['Dumbbell sumo squat', 'Overhead press', 'Single-arm row', 'Hip thrust', 'Basic crunch', 'Reverse fly'] }
+  ];
+  var DEFAULT_WEEKLY_PLAN = {
+    0: { kind: 'rest' },
+    1: { kind: 'routine', routineId: 'dayA' },
+    2: { kind: 'cardio', type: 'road_moderate' },
+    3: { kind: 'routine', routineId: 'dayB' },
+    4: { kind: 'cardio', type: 'road_vigorous' },
+    5: { kind: 'rest' },
+    6: { kind: 'cardio', type: 'road_easy' }
+  };
+  function loadAll() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      var data = raw ? JSON.parse(raw) : { days: {}, goal: null };
+      if (!Array.isArray(data.exercises)) data.exercises = DEFAULT_EXERCISES.slice();
+      if (data.goalWeight === undefined) data.goalWeight = null;
+      if (data.goalDate === undefined) data.goalDate = null;
+      if (!Array.isArray(data.favoriteFoods)) data.favoriteFoods = [];
+      if (!Array.isArray(data.routines)) data.routines = JSON.parse(JSON.stringify(DEFAULT_ROUTINES));
+      if (!data.weeklyPlan || typeof data.weeklyPlan !== 'object') data.weeklyPlan = JSON.parse(JSON.stringify(DEFAULT_WEEKLY_PLAN));
+      if (data.lastExportAt === undefined) data.lastExportAt = null;
+      if (!Array.isArray(data.knownFoods)) data.knownFoods = [];
+      return data;
+    } catch (e) {
+      return {
+        days: {}, goal: null, exercises: DEFAULT_EXERCISES.slice(), goalWeight: null, goalDate: null, favoriteFoods: [],
+        routines: JSON.parse(JSON.stringify(DEFAULT_ROUTINES)), weeklyPlan: JSON.parse(JSON.stringify(DEFAULT_WEEKLY_PLAN)), lastExportAt: null, knownFoods: []
+      };
+    }
+  }
+  function saveAll(data) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+    catch (e) { showToast('Storage error \u2014 changes may not be saved'); }
+  }
+  function fmtDate(d) { return d.toISOString().slice(0,10); }
+  function displayDate(d) {
+    var today = fmtDate(new Date());
+    var key = fmtDate(d);
+    if (key === today) return 'Today';
+    return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+  }
+  function dayRecord(data, key) {
+    if (!data.days[key]) data.days[key] = { entries: [], weight: null, workouts: [], steps: null };
+    if (data.days[key].steps === undefined) data.days[key].steps = null;
+    return data.days[key];
+  }
+  function workoutStepsForDay(rec) {
+    return (rec.workouts || []).reduce(function(s, w) {
+      return s + (w.type === 'walking' && w.estimatedSteps ? w.estimatedSteps : 0);
+    }, 0);
+  }
+  function netSteps(rec) {
+    if (rec.steps == null) return null;
+    var workoutSteps = workoutStepsForDay(rec);
+    return { raw: rec.steps, workoutSteps: workoutSteps, net: Math.max(0, rec.steps - workoutSteps) };
+  }
+  var CAL_PER_STEP_AT_150LB = 0.045; // rough estimate, scaled by logged weight
+  function calsFromNetSteps(ns, weightLb) {
+    if (!ns || !weightLb) return 0;
+    return round(ns.net * CAL_PER_STEP_AT_150LB * (weightLb / 150));
+  }
+  function round(n) { return Math.round(n); }
+  var toastTimeoutId = null;
+  function showToast(msg) {
+    var t = document.getElementById('toast');
+    document.getElementById('toastMsg').textContent = msg;
+    document.getElementById('toastUndoBtn').classList.add('hidden');
+    t.classList.add('show');
+    if (toastTimeoutId) clearTimeout(toastTimeoutId);
+    toastTimeoutId = setTimeout(function() { t.classList.remove('show'); }, 1800);
+  }
+  function showUndoToast(msg, undoFn) {
+    var t = document.getElementById('toast');
+    var undoBtn = document.getElementById('toastUndoBtn');
+    document.getElementById('toastMsg').textContent = msg;
+    undoBtn.classList.remove('hidden');
+    t.classList.add('show');
+    if (toastTimeoutId) clearTimeout(toastTimeoutId);
+    var handler = function() {
+      undoBtn.classList.add('hidden');
+      t.classList.remove('show');
+      undoBtn.removeEventListener('click', handler);
+      undoFn();
+    };
+    undoBtn.addEventListener('click', handler);
+    toastTimeoutId = setTimeout(function() {
+      t.classList.remove('show');
+      undoBtn.removeEventListener('click', handler);
+    }, 5000);
+  }
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+  function mostRecentWeight(data, beforeOrOnKey) {
+    var keys = Object.keys(data.days).filter(function(k) {
+      return data.days[k].weight != null && k <= beforeOrOnKey;
+    }).sort();
+    if (keys.length === 0) return null;
+    return data.days[keys[keys.length - 1]].weight;
+  }
+  function mostRecentExerciseLog(data, exerciseName) {
+    var name = exerciseName.trim().toLowerCase();
+    if (!name) return null;
+    var keys = Object.keys(data.days).sort().reverse();
+    for (var i = 0; i < keys.length; i++) {
+      var workouts = data.days[keys[i]].workouts || [];
+      for (var j = workouts.length - 1; j >= 0; j--) {
+        var w = workouts[j];
+        if (w.exercises) {
+          for (var k = w.exercises.length - 1; k >= 0; k--) {
+            if (w.exercises[k].name.trim().toLowerCase() === name) {
+              return { date: keys[i], entry: w.exercises[k] };
+            }
+          }
+        }
+      }
+    }
+    return null;
+  }
+  function mostRecentFoodLog(data, foodName) {
+    var name = foodName.trim().toLowerCase();
+    if (!name) return null;
+    var keys = Object.keys(data.days).sort().reverse();
+    for (var i = 0; i < keys.length; i++) {
+      var entries = data.days[keys[i]].entries || [];
+      for (var j = entries.length - 1; j >= 0; j--) {
+        if (entries[j].food.trim().toLowerCase() === name) {
+          return { date: keys[i], entry: entries[j] };
+        }
+      }
+    }
+    return null;
+  }
+  function bestForExercise(data, exerciseName) {
+    var name = exerciseName.trim().toLowerCase();
+    if (!name) return null;
+    var best = null;
+    Object.keys(data.days).sort().forEach(function(k) {
+      var workouts = data.days[k].workouts || [];
+      workouts.forEach(function(w) {
+        if (w.exercises) {
+          w.exercises.forEach(function(ex) {
+            if (ex.name.trim().toLowerCase() === name) {
+              if (!best || ex.weight > best.entry.weight) {
+                best = { date: k, entry: ex };
+              }
+            }
+          });
+        }
+      });
+    });
+    return best;
+  }
+
+  var appData = loadAll();
+  var currentDate = new Date();
+
+  function currentKey() { return fmtDate(currentDate); }
+
+  // ---- Appearance & units ----
+  document.getElementById('themeLightBtn').addEventListener('click', function() { applyTheme('light'); });
+  document.getElementById('themeDarkBtn').addEventListener('click', function() { applyTheme('dark'); });
+  document.getElementById('unitsLbBtn').addEventListener('click', function() { applyUnits('lb'); });
+  document.getElementById('unitsKgBtn').addEventListener('click', function() { applyUnits('kg'); });
+
+  // ---- Tabs ----
+  var tabs = document.querySelectorAll('nav.tabs button');
+  tabs.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      tabs.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      ['home','food','weight','workout','plan','progress','history','data'].forEach(function(name) {
+        document.getElementById('tab-' + name).classList.toggle('hidden', name !== btn.dataset.tab);
+      });
+      if (btn.dataset.tab === 'history') renderHistory();
+      if (btn.dataset.tab === 'progress') renderProgress();
+      if (btn.dataset.tab === 'weight') renderWeightChart();
+      if (btn.dataset.tab === 'plan') renderPlan();
+      if (btn.dataset.tab === 'food') renderCalorieChart();
+    });
+  });
+  document.getElementById('historyRangeSelect').addEventListener('change', renderHistory);
+
+  // ---- Quick add (Home tab) ----
+  document.getElementById('quickFood').addEventListener('click', function() {
+    document.querySelector('nav.tabs button[data-tab="food"]').click();
+    document.getElementById('foodInput').focus();
+  });
+  document.getElementById('quickWeight').addEventListener('click', function() {
+    document.querySelector('nav.tabs button[data-tab="weight"]').click();
+    document.getElementById('weightInput').focus();
+  });
+  document.getElementById('quickWorkout').addEventListener('click', function() {
+    document.querySelector('nav.tabs button[data-tab="workout"]').click();
+  });
+  function showPlannedExerciseChips(exercises, labelText) {
+    var chipsWrap = document.getElementById('plannedExerciseChips');
+    var chipsInner = document.getElementById('plannedExerciseChipsInner');
+    var chipsLabel = document.getElementById('plannedExerciseChipsLabel');
+    chipsWrap.style.display = 'none';
+    chipsInner.innerHTML = '';
+    if (!exercises || !exercises.length) return;
+    chipsLabel.textContent = labelText;
+    chipsWrap.style.display = 'block';
+    exercises.forEach(function(exName) {
+      var chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'ghost';
+      chip.style.cssText = 'padding:6px 10px;font-size:12.5px;';
+      chip.textContent = exName;
+      chip.addEventListener('click', function() {
+        document.getElementById('exName').value = exName;
+        document.getElementById('exName').dispatchEvent(new Event('input'));
+        document.getElementById('exWeight').focus();
+      });
+      chipsInner.appendChild(chip);
+    });
+  }
+  function preloadRoutine(routine, labelPrefix) {
+    var newFromHistory = [];
+    var needsInput = [];
+    if (routine && routine.exercises.length) {
+      routine.exercises.forEach(function(exName) {
+        var last = mostRecentExerciseLog(appData, exName);
+        var alreadyStaged = currentExercises.some(function(e) { return e.name.toLowerCase() === exName.toLowerCase(); });
+        if (alreadyStaged) return;
+        if (last) {
+          newFromHistory.push({ name: exName, weight: last.entry.weight, sets: last.entry.sets, reps: last.entry.reps });
+        } else {
+          needsInput.push(exName);
+        }
+      });
+    }
+    if (newFromHistory.length) {
+      currentExercises = currentExercises.concat(newFromHistory);
+      renderExercises();
+    }
+    var chipLabel = needsInput.length
+      ? labelPrefix + ' \u2014 no history yet for these, tap to fill in'
+      : '';
+    showPlannedExerciseChips(needsInput, chipLabel);
+    if (newFromHistory.length) {
+      showToast(newFromHistory.length + ' exercise' + (newFromHistory.length > 1 ? 's' : '') + ' added from last time \u2014 review before saving');
+    }
+  }
+  function refreshPreloadRoutineOptions() {
+    var select = document.getElementById('preloadRoutineSelect');
+    var prevValue = select.value;
+    select.innerHTML = '<option value="">Choose a routine&hellip;</option>';
+    appData.routines.forEach(function(r) {
+      var opt = document.createElement('option');
+      opt.value = r.id;
+      opt.textContent = r.name;
+      select.appendChild(opt);
+    });
+    if (prevValue && appData.routines.some(function(r) { return r.id === prevValue; })) {
+      select.value = prevValue;
+    }
+  }
+  document.getElementById('preloadRoutineSelect').addEventListener('change', function() {
+    var routine = routineById(this.value);
+    if (routine) {
+      preloadRoutine(routine, 'From ' + routine.name);
+    } else {
+      showPlannedExerciseChips([], '');
+    }
+  });
+
+  document.getElementById('homeLogPlanBtn').addEventListener('click', function() {
+    var plan = todayPlanEntry();
+    document.querySelector('nav.tabs button[data-tab="workout"]').click();
+    var typeSelect = document.getElementById('workoutType');
+    document.getElementById('preloadRoutineSelect').value = '';
+    if (plan.kind === 'routine') {
+      var routine = routineById(plan.routineId);
+      typeSelect.value = 'strength';
+      typeSelect.dispatchEvent(new Event('change'));
+      if (routine) {
+        document.getElementById('preloadRoutineSelect').value = routine.id;
+        preloadRoutine(routine, 'Today\u2019s plan: ' + routine.name);
+      }
+    } else if (plan.kind === 'cardio') {
+      typeSelect.value = plan.type;
+      typeSelect.dispatchEvent(new Event('change'));
+      var durEl = document.getElementById('durationInput');
+      if (durEl) durEl.focus();
+    }
+  });
+
+  // ---- Date nav ----
+  document.getElementById('prevDay').addEventListener('click', function() {
+    currentDate.setDate(currentDate.getDate() - 1);
+    renderDay();
+  });
+  document.getElementById('nextDay').addEventListener('click', function() {
+    currentDate.setDate(currentDate.getDate() + 1);
+    renderDay();
+  });
+
+  // ---- Macro toggle ----
+  document.getElementById('macroToggle').addEventListener('click', function() {
+    var f = document.getElementById('macroFields');
+    f.classList.toggle('hidden');
+    this.textContent = f.classList.contains('hidden') ? '+ add macros (optional)' : '\u2212 hide macros';
+  });
+
+  // ---- Goal ----
+  document.getElementById('goalInput').addEventListener('change', function() {
+    var val = parseInt(this.value, 10);
+    appData.goal = isNaN(val) ? null : val;
+    saveAll(appData);
+    renderDay();
+  });
+
+  // ---- Add / edit food ----
+  var editingFoodIdx = null;
+  function clearFoodForm() {
+    document.getElementById('foodInput').value = '';
+    document.getElementById('calInput').value = '';
+    document.getElementById('proteinInput').value = '';
+    document.getElementById('carbInput').value = '';
+    document.getElementById('fatInput').value = '';
+    document.getElementById('saveFavoriteCheck').checked = false;
+    document.getElementById('lastLoggedFoodHint').textContent = '';
+  }
+  function exitFoodEditMode() {
+    editingFoodIdx = null;
+    document.getElementById('addFoodHeading').textContent = 'Add food';
+    document.getElementById('addFoodBtn').textContent = 'Add entry';
+    document.getElementById('cancelFoodEditBtn').classList.add('hidden');
+    clearFoodForm();
+  }
+  document.getElementById('cancelFoodEditBtn').addEventListener('click', exitFoodEditMode);
+  document.getElementById('foodInput').addEventListener('input', function() {
+    var hint = document.getElementById('lastLoggedFoodHint');
+    if (editingFoodIdx != null) { hint.textContent = ''; return; }
+    var last = mostRecentFoodLog(appData, this.value);
+    if (last) {
+      var bits = [last.entry.cals + ' cal'];
+      if (last.entry.protein != null) bits.push(last.entry.protein + 'g P');
+      if (last.entry.carbs != null) bits.push(last.entry.carbs + 'g C');
+      if (last.entry.fat != null) bits.push(last.entry.fat + 'g F');
+      hint.textContent = 'Filled in from last time (' + last.date + ')';
+      // Only auto-fill empty fields, so we never clobber something the person is actively typing.
+      var calEl = document.getElementById('calInput');
+      if (calEl.value === '') calEl.value = last.entry.cals;
+      var proteinEl = document.getElementById('proteinInput');
+      var carbEl = document.getElementById('carbInput');
+      var fatEl = document.getElementById('fatInput');
+      if (last.entry.protein != null || last.entry.carbs != null || last.entry.fat != null) {
+        if (proteinEl.value === '' && last.entry.protein != null) proteinEl.value = last.entry.protein;
+        if (carbEl.value === '' && last.entry.carbs != null) carbEl.value = last.entry.carbs;
+        if (fatEl.value === '' && last.entry.fat != null) fatEl.value = last.entry.fat;
+        document.getElementById('macroFields').classList.remove('hidden');
+        document.getElementById('macroToggle').textContent = '\u2212 hide macros';
+      }
+    } else {
+      hint.textContent = '';
+    }
+  });
+  document.getElementById('addFoodBtn').addEventListener('click', function() {
+    var foodEl = document.getElementById('foodInput');
+    var calEl = document.getElementById('calInput');
+    var food = foodEl.value.trim();
+    var cals = parseInt(calEl.value, 10);
+    var err = document.getElementById('foodError');
+    if (!food || isNaN(cals) || cals < 0) {
+      err.textContent = 'Enter a food name and a valid calorie amount.';
+      err.style.display = 'block';
+      return;
+    }
+    err.style.display = 'none';
+    var protein = parseFloat(document.getElementById('proteinInput').value);
+    var carbs = parseFloat(document.getElementById('carbInput').value);
+    var fat = parseFloat(document.getElementById('fatInput').value);
+    var entry = { food: food, cals: cals };
+    if (!isNaN(protein)) entry.protein = protein;
+    if (!isNaN(carbs)) entry.carbs = carbs;
+    if (!isNaN(fat)) entry.fat = fat;
+
+    var rec = dayRecord(appData, currentKey());
+    if (editingFoodIdx != null) {
+      rec.entries[editingFoodIdx] = entry;
+    } else {
+      rec.entries.push(entry);
+    }
+
+    if (!appData.knownFoods.some(function(f) { return f.toLowerCase() === food.toLowerCase(); })) {
+      appData.knownFoods.push(food);
+      refreshFoodOptions();
+    }
+
+    if (document.getElementById('saveFavoriteCheck').checked) {
+      var existingFav = appData.favoriteFoods.findIndex(function(f) { return f.food.toLowerCase() === food.toLowerCase(); });
+      if (existingFav === -1) appData.favoriteFoods.push(entry);
+      else appData.favoriteFoods[existingFav] = entry;
+    }
+
+    saveAll(appData);
+    exitFoodEditMode();
+    renderDay();
+    foodEl.focus();
+  });
+
+  // ---- Goal ----
+  function saveGoal(silent) {
+    var wEl = document.getElementById('goalWeightInput');
+    var dEl = document.getElementById('goalDateInput');
+    var wLb = toLb(wEl.value);
+    var err = document.getElementById('goalError');
+    if (wEl.value !== '' && (isNaN(wLb) || wLb <= 0)) {
+      err.textContent = 'Enter a valid goal weight, or leave it blank.';
+      err.style.display = 'block';
+      return;
+    }
+    err.style.display = 'none';
+    var newGoalWeight = wEl.value !== '' ? wLb : null;
+    var newGoalDate = dEl.value || null;
+    if (newGoalWeight === appData.goalWeight && newGoalDate === appData.goalDate) return; // nothing changed
+    appData.goalWeight = newGoalWeight;
+    appData.goalDate = newGoalDate;
+    saveAll(appData);
+    renderDay();
+    if (!silent) showToast('Goal saved');
+  }
+  document.getElementById('saveGoalBtn').addEventListener('click', function() { saveGoal(false); });
+  document.getElementById('goalWeightInput').addEventListener('blur', function() { saveGoal(true); });
+  document.getElementById('goalDateInput').addEventListener('change', function() { saveGoal(true); });
+  document.getElementById('goalWeightInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') { saveGoal(false); this.blur(); }
+  });
+
+  // ---- Weight ----
+  document.getElementById('saveWeightBtn').addEventListener('click', function() {
+    var el = document.getElementById('weightInput');
+    var valLb = toLb(el.value);
+    var err = document.getElementById('weightError');
+    if (el.value === '' || isNaN(valLb) || valLb <= 0) {
+      err.textContent = 'Enter a valid weight.';
+      err.style.display = 'block';
+      return;
+    }
+    err.style.display = 'none';
+    var rec = dayRecord(appData, currentKey());
+    rec.weight = valLb;
+    saveAll(appData);
+    renderDay();
+    showToast('Weight saved');
+  });
+
+  document.getElementById('saveStepsBtn').addEventListener('click', function() {
+    var el = document.getElementById('stepsInput');
+    var val = parseInt(el.value, 10);
+    var err = document.getElementById('stepsError');
+    if (isNaN(val) || val < 0) {
+      err.textContent = 'Enter a valid step count.';
+      err.style.display = 'block';
+      return;
+    }
+    err.style.display = 'none';
+    var rec = dayRecord(appData, currentKey());
+    rec.steps = val;
+    saveAll(appData);
+    renderDay();
+    showToast('Steps saved');
+  });
+
+  // ---- Workout type change (toggle simple duration vs spin segment builder) ----
+  var currentSegments = [];
+  var editingWorkoutIdx = null;
+  function renderSegments() {
+    var list = document.getElementById('segmentList');
+    list.innerHTML = '';
+    currentSegments.forEach(function(seg, idx) {
+      var row = document.createElement('div');
+      row.className = 'histRow';
+      row.innerHTML = '<span>Level ' + seg.resistance + ' &middot; ' + seg.minutes + ' min</span>' +
+        '<button class="delBtn" data-idx="' + idx + '" aria-label="Remove block">&times;</button>';
+      list.appendChild(row);
+    });
+    list.querySelectorAll('.delBtn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        currentSegments.splice(parseInt(btn.dataset.idx, 10), 1);
+        renderSegments();
+      });
+    });
+    var totalMin = currentSegments.reduce(function(s, seg) { return s + seg.minutes; }, 0);
+    document.getElementById('segTotalLabel').textContent = currentSegments.length
+      ? 'Total: ' + totalMin + ' min across ' + currentSegments.length + ' block' + (currentSegments.length > 1 ? 's' : '')
+      : 'No blocks added yet.';
+  }
+  document.getElementById('addSegmentBtn').addEventListener('click', function() {
+    var rEl = document.getElementById('segResistance');
+    var mEl = document.getElementById('segMinutes');
+    var r = parseInt(rEl.value, 10);
+    var m = parseFloat(mEl.value);
+    var err = document.getElementById('workoutError');
+    if (isNaN(r) || r < 1 || r > 100 || isNaN(m) || m <= 0) {
+      err.textContent = 'Enter a resistance level (1\u2013100) and minutes greater than 0 for this block.';
+      err.style.display = 'block';
+      return;
+    }
+    err.style.display = 'none';
+    currentSegments.push({ resistance: r, minutes: m });
+    rEl.value = ''; mEl.value = '';
+    renderSegments();
+  });
+  function syncWorkoutTypeFields(resetForms) {
+    var typeEl = document.getElementById('workoutType');
+    var isSpin = typeEl.value.indexOf('spin') === 0;
+    var isStrength = typeEl.value === 'strength';
+    document.getElementById('simpleDurationField').style.display = isSpin ? 'none' : 'block';
+    document.getElementById('spinSegmentBuilder').style.display = isSpin ? 'block' : 'none';
+    document.getElementById('strengthExerciseBuilder').style.display = isStrength ? 'block' : 'none';
+    if (resetForms) {
+      currentSegments = [];
+      currentExercises = [];
+      renderSegments();
+      renderExercises();
+      document.getElementById('workoutError').style.display = 'none';
+      document.getElementById('preloadRoutineSelect').value = '';
+      showPlannedExerciseChips([], '');
+    }
+  }
+  document.getElementById('workoutType').addEventListener('change', function() {
+    syncWorkoutTypeFields(true);
+  });
+
+  function exitWorkoutEditMode() {
+    editingWorkoutIdx = null;
+    document.getElementById('addWorkoutBtn').textContent = 'Add workout';
+    document.getElementById('cancelWorkoutEditBtn').classList.add('hidden');
+    document.getElementById('durationInput').value = '';
+  }
+  document.getElementById('cancelWorkoutEditBtn').addEventListener('click', exitWorkoutEditMode);
+
+  // ---- Strength exercise builder ----
+  var currentExercises = [];
+  function refreshExerciseOptions() {
+    var dl = document.getElementById('exerciseOptions');
+    dl.innerHTML = '';
+    appData.exercises.forEach(function(name) {
+      var opt = document.createElement('option');
+      opt.value = name;
+      dl.appendChild(opt);
+    });
+  }
+  function refreshFoodOptions() {
+    var dl = document.getElementById('foodOptions');
+    dl.innerHTML = '';
+    appData.knownFoods.forEach(function(name) {
+      var opt = document.createElement('option');
+      opt.value = name;
+      dl.appendChild(opt);
+    });
+  }
+  function renderExercises() {
+    var list = document.getElementById('exerciseList');
+    list.innerHTML = '';
+    currentExercises.forEach(function(ex, idx) {
+      var row = document.createElement('div');
+      row.className = 'histRow';
+      row.innerHTML = '<span>' + escapeHtml(ex.name) + ' &middot; ' + dispW(ex.weight) + ' ' + unitLabel() + ' &middot; ' + ex.sets + '&times;' + ex.reps + '</span>' +
+        '<button class="delBtn" data-idx="' + idx + '" aria-label="Remove exercise">&times;</button>';
+      list.appendChild(row);
+    });
+    list.querySelectorAll('.delBtn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        currentExercises.splice(parseInt(btn.dataset.idx, 10), 1);
+        renderExercises();
+      });
+    });
+  }
+  document.getElementById('exName').addEventListener('input', function() {
+    var hint = document.getElementById('lastLoggedHint');
+    var last = mostRecentExerciseLog(appData, this.value);
+    if (last) {
+      hint.textContent = 'Last: ' + dispW(last.entry.weight) + ' ' + unitLabel() + ' \u00d7 ' + last.entry.sets + '\u00d7' + last.entry.reps + ' on ' + last.date;
+    } else {
+      hint.textContent = '';
+    }
+  });
+  document.getElementById('addExerciseBtn').addEventListener('click', function() {
+    var nameEl = document.getElementById('exName');
+    var wEl = document.getElementById('exWeight');
+    var sEl = document.getElementById('exSets');
+    var rEl = document.getElementById('exReps');
+    var name = nameEl.value.trim();
+    var weightLb = toLb(wEl.value);
+    var sets = parseInt(sEl.value, 10);
+    var reps = parseInt(rEl.value, 10);
+    var err = document.getElementById('workoutError');
+    if (!name || wEl.value === '' || isNaN(weightLb) || weightLb < 0 || isNaN(sets) || sets <= 0 || isNaN(reps) || reps <= 0) {
+      err.textContent = 'Enter an exercise name, weight, sets, and reps.';
+      err.style.display = 'block';
+      return;
+    }
+    err.style.display = 'none';
+    var prevBest = bestForExercise(appData, name);
+    currentExercises.push({ name: name, weight: weightLb, sets: sets, reps: reps });
+    if (appData.exercises.indexOf(name) === -1) {
+      appData.exercises.push(name);
+      saveAll(appData);
+      refreshExerciseOptions();
+    }
+    if (!prevBest || weightLb > prevBest.entry.weight) {
+      showToast('New personal best \u2014 ' + name + ' at ' + dispW(weightLb) + ' ' + unitLabel() + '!');
+    }
+    nameEl.value = ''; wEl.value = ''; sEl.value = ''; rEl.value = '';
+    document.getElementById('lastLoggedHint').textContent = '';
+    renderExercises();
+  });
+
+  // ---- Workout ----
+  document.getElementById('addWorkoutBtn').addEventListener('click', function() {
+    var typeEl = document.getElementById('workoutType');
+    var type = typeEl.value;
+    var isSpin = type.indexOf('spin') === 0;
+    var err = document.getElementById('workoutError');
+
+    var weightLb = mostRecentWeight(appData, currentKey());
+    if (weightLb == null) {
+      err.textContent = 'Log a weight entry first (Weight tab) so calories burned can be estimated.';
+      err.style.display = 'block';
+      return;
+    }
+    var weightKg = weightLb / 2.2046226218;
+
+    if (isSpin) {
+      if (currentSegments.length === 0) {
+        err.textContent = 'Add at least one resistance block before saving.';
+        err.style.display = 'block';
+        return;
+      }
+      err.style.display = 'none';
+      var totalMin = 0, burnedTotal = 0;
+      currentSegments.forEach(function(seg) {
+        var mult = 0.75 + (seg.resistance / 100) * 0.8; // 0.75x at level 1 up to 1.55x at level 100
+        burnedTotal += MET.spin * weightKg * (seg.minutes / 60) * mult;
+        totalMin += seg.minutes;
+      });
+      var avgResistance = round(currentSegments.reduce(function(s, seg) { return s + seg.resistance * seg.minutes; }, 0) / totalMin);
+      var rec = dayRecord(appData, currentKey());
+      rec.workouts.push({
+        type: type, duration: totalMin, burned: round(burnedTotal),
+        segments: currentSegments.slice(), avgResistance: avgResistance
+      });
+      saveAll(appData);
+      currentSegments = [];
+      renderSegments();
+      renderDay();
+    } else {
+      var durEl = document.getElementById('durationInput');
+      var duration = parseFloat(durEl.value);
+      if (isNaN(duration) || duration <= 0) {
+        err.textContent = 'Enter a valid duration in minutes.';
+        err.style.display = 'block';
+        return;
+      }
+      err.style.display = 'none';
+      var burned = round(MET[type] * weightKg * (duration / 60));
+      var entry2 = { type: type, duration: duration, burned: burned };
+      if (type === 'strength' && currentExercises.length > 0) {
+        entry2.exercises = currentExercises.slice();
+      }
+      if (type === 'walking') {
+        entry2.estimatedSteps = round(duration * STEPS_PER_MIN_WALK);
+      }
+      var rec2 = dayRecord(appData, currentKey());
+      if (editingWorkoutIdx != null) {
+        var existing = rec2.workouts[editingWorkoutIdx];
+        if (type === 'strength' && !entry2.exercises && existing.exercises) {
+          entry2.exercises = existing.exercises;
+        }
+        rec2.workouts[editingWorkoutIdx] = entry2;
+      } else {
+        rec2.workouts.push(entry2);
+      }
+      saveAll(appData);
+      durEl.value = '';
+      currentExercises = [];
+      renderExercises();
+      exitWorkoutEditMode();
+      renderDay();
+    }
+  });
+
+  // ---- Export ----
+  document.getElementById('iosGuideToggle').addEventListener('click', function() {
+    var body = document.getElementById('iosGuideBody');
+    var chevron = document.getElementById('iosGuideChevron');
+    var isHidden = body.classList.toggle('hidden');
+    chevron.innerHTML = isHidden ? '&#9660;' : '&#9650;';
+  });
+  document.getElementById('exportBtn').addEventListener('click', function() {
+    var blob = new Blob([JSON.stringify(appData, null, 2)], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    var stamp = fmtDate(new Date());
+    a.href = url;
+    a.download = 'dailygrind-backup-' + stamp + '.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    appData.lastExportAt = new Date().toISOString();
+    saveAll(appData);
+    renderExportStatus();
+    renderDay();
+    showToast('Export downloaded');
+  });
+  document.getElementById('exportCsvBtn').addEventListener('click', function() {
+    var rows = [['date', 'weight_lb', 'net_steps', 'calories_in', 'calories_burned', 'net_calories']];
+    Object.keys(appData.days).sort().forEach(function(k) {
+      var dayRec = appData.days[k];
+      if (!dayHasData(dayRec)) return;
+      var totalCalsRow = (dayRec.entries || []).reduce(function(s, e) { return s + e.cals; }, 0);
+      var burnedRow = (dayRec.workouts || []).reduce(function(s, w) { return s + w.burned; }, 0);
+      var rowWeightLb = dayRec.weight != null ? dayRec.weight : mostRecentWeight(appData, k);
+      var stepCalsRow = calsFromNetSteps(netSteps(dayRec), rowWeightLb);
+      burnedRow += stepCalsRow;
+      var nsRow = netSteps(dayRec);
+      rows.push([
+        k,
+        dayRec.weight != null ? dayRec.weight : '',
+        nsRow != null ? nsRow.net : '',
+        totalCalsRow,
+        burnedRow,
+        totalCalsRow - burnedRow
+      ]);
+    });
+    var csv = rows.map(function(row) {
+      return row.map(function(cell) {
+        var str = String(cell);
+        return /[",\n]/.test(str) ? '"' + str.replace(/"/g, '""') + '"' : str;
+      }).join(',');
+    }).join('\n');
+    var blob = new Blob([csv], { type: 'text/csv' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    var stamp = fmtDate(new Date());
+    a.href = url;
+    a.download = 'dailygrind-summary-' + stamp + '.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('CSV downloaded');
+  });
+  function renderExportStatus() {
+    var statusEl = document.getElementById('exportStatus');
+    var reminderEl = document.getElementById('homeBackupReminder');
+    if (!appData.lastExportAt) {
+      statusEl.textContent = 'You haven\u2019t exported a backup yet.';
+      statusEl.style.color = 'var(--danger)';
+      reminderEl.textContent = '\u26a0\ufe0f You\u2019ve never exported a backup \u2014 consider doing that on the Data tab.';
+      reminderEl.style.display = 'block';
+      return;
+    }
+    var daysSince = Math.floor((new Date() - new Date(appData.lastExportAt)) / 86400000);
+    var label = daysSince <= 0 ? 'today' : daysSince === 1 ? '1 day ago' : daysSince + ' days ago';
+    statusEl.textContent = 'Last exported: ' + label + '.';
+    statusEl.style.color = daysSince > 7 ? 'var(--danger)' : 'var(--ink-faint)';
+    if (daysSince > 7) {
+      reminderEl.textContent = '\u26a0\ufe0f It\u2019s been ' + daysSince + ' days since your last backup \u2014 worth exporting again on the Data tab.';
+      reminderEl.style.display = 'block';
+    } else {
+      reminderEl.style.display = 'none';
+    }
+  }
+
+  // ---- Import ----
+  var importConfirmPending = false;
+  var importConfirmTimeout = null;
+  document.getElementById('importBtn').addEventListener('click', function() {
+    var fileEl = document.getElementById('importFile');
+    var err = document.getElementById('importError');
+    if (!fileEl.files || fileEl.files.length === 0) {
+      err.textContent = 'Choose a backup file first.';
+      err.style.display = 'block';
+      return;
+    }
+    var btn = this;
+    if (!importConfirmPending) {
+      importConfirmPending = true;
+      err.textContent = 'This replaces all current data on this device. Tap "Import data" again to confirm.';
+      err.style.display = 'block';
+      err.style.color = 'var(--danger)';
+      btn.textContent = 'Tap again to confirm';
+      importConfirmTimeout = setTimeout(function() {
+        importConfirmPending = false;
+        btn.textContent = 'Import data';
+        err.style.display = 'none';
+        err.style.color = '';
+      }, 6000);
+      return;
+    }
+    clearTimeout(importConfirmTimeout);
+    importConfirmPending = false;
+    btn.textContent = 'Import data';
+    err.style.color = '';
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        var parsed = JSON.parse(e.target.result);
+        if (!parsed || typeof parsed !== 'object' || typeof parsed.days !== 'object') {
+          throw new Error('bad shape');
+        }
+        appData = parsed;
+        if (!Array.isArray(appData.exercises)) appData.exercises = DEFAULT_EXERCISES.slice();
+        if (appData.goalWeight === undefined) appData.goalWeight = null;
+        if (appData.goalDate === undefined) appData.goalDate = null;
+        if (!Array.isArray(appData.favoriteFoods)) appData.favoriteFoods = [];
+        if (!Array.isArray(appData.routines)) appData.routines = JSON.parse(JSON.stringify(DEFAULT_ROUTINES));
+        if (!appData.weeklyPlan || typeof appData.weeklyPlan !== 'object') appData.weeklyPlan = JSON.parse(JSON.stringify(DEFAULT_WEEKLY_PLAN));
+        if (appData.lastExportAt === undefined) appData.lastExportAt = null;
+        if (!Array.isArray(appData.knownFoods)) appData.knownFoods = [];
+        saveAll(appData);
+        err.style.display = 'none';
+        refreshExerciseOptions();
+        refreshFoodOptions();
+        renderExportStatus();
+        renderDay();
+        showToast('Data imported');
+      } catch (ex) {
+        err.textContent = 'That file doesn\'t look like a valid backup.';
+        err.style.display = 'block';
+      }
+    };
+    reader.onerror = function() {
+      err.textContent = 'Could not read that file.';
+      err.style.display = 'block';
+    };
+    reader.readAsText(fileEl.files[0]);
+  });
+  document.getElementById('importFile').addEventListener('change', function() {
+    if (importConfirmPending) {
+      clearTimeout(importConfirmTimeout);
+      importConfirmPending = false;
+      document.getElementById('importBtn').textContent = 'Import data';
+      document.getElementById('importError').style.display = 'none';
+    }
+  });
+
+  // ---- Render ----
+  function drawTrendChart(canvasId, emptyMsgId, points, valueKey, roundLabels) {
+    var canvas = document.getElementById(canvasId);
+    var emptyMsg = document.getElementById(emptyMsgId);
+
+    if (points.length < 2) {
+      canvas.style.display = 'none';
+      emptyMsg.classList.remove('hidden');
+      return;
+    }
+    canvas.style.display = 'block';
+    emptyMsg.classList.add('hidden');
+
+    var dpr = window.devicePixelRatio || 1;
+    var cssWidth = canvas.clientWidth || 480;
+    var cssHeight = 150;
+    canvas.width = cssWidth * dpr;
+    canvas.height = cssHeight * dpr;
+    var ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, cssWidth, cssHeight);
+
+    var padL = 42, padR = 12, padT = 22, padB = 20;
+    var w = cssWidth - padL - padR;
+    var h = cssHeight - padT - padB;
+    var values = points.map(function(p) { return p[valueKey]; });
+    var minV = Math.min.apply(null, values);
+    var maxV = Math.max.apply(null, values);
+    if (minV === maxV) { minV -= 1; maxV += 1; }
+    var rangePad = (maxV - minV) * 0.1;
+    minV -= rangePad; maxV += rangePad;
+
+    function xAt(i) { return padL + (points.length === 1 ? 0 : (i / (points.length - 1)) * w); }
+    function yAt(v) { return padT + h - ((v - minV) / (maxV - minV)) * h; }
+
+    var lineColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#0F6E56';
+    var mutedColor = getComputedStyle(document.documentElement).getPropertyValue('--ink-faint').trim() || '#93A198';
+
+    ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--line').trim() || '#E4E2D8';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(padL, padT + h); ctx.lineTo(padL + w, padT + h);
+    ctx.stroke();
+
+    // 7-entry rolling average (smooths day-to-day noise)
+    var avgPoints = points.map(function(p, i) {
+      var windowVals = points.slice(Math.max(0, i - 6), i + 1).map(function(pt) { return pt[valueKey]; });
+      return windowVals.reduce(function(s, v) { return s + v; }, 0) / windowVals.length;
+    });
+    var avgColor = getComputedStyle(document.documentElement).getPropertyValue('--ink-soft').trim() || '#5C6B62';
+    ctx.strokeStyle = avgColor;
+    ctx.lineWidth = 2;
+    ctx.setLineDash([4, 3]);
+    ctx.beginPath();
+    avgPoints.forEach(function(v, i) {
+      var x = xAt(i), y = yAt(v);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.strokeStyle = lineColor;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    points.forEach(function(p, i) {
+      var x = xAt(i), y = yAt(p[valueKey]);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+
+    ctx.fillStyle = lineColor;
+    points.forEach(function(p, i) {
+      ctx.beginPath();
+      ctx.arc(xAt(i), yAt(p[valueKey]), 2.5, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    ctx.font = '11px -apple-system, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillStyle = lineColor;
+    ctx.fillText('\u2014 daily', padL, padT - 4);
+    ctx.fillStyle = avgColor;
+    ctx.fillText('- - 7-entry avg', padL + 60, padT - 4);
+
+    ctx.fillStyle = mutedColor;
+    ctx.font = '11px -apple-system, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText(round(maxV).toLocaleString() + '', padL - 6, padT + 4);
+    ctx.fillText(round(minV).toLocaleString() + '', padL - 6, padT + h + 2);
+    ctx.textAlign = 'left';
+    ctx.fillText(points[0].date.slice(5), padL, cssHeight - 4);
+    ctx.textAlign = 'right';
+    ctx.fillText(points[points.length - 1].date.slice(5), padL + w, cssHeight - 4);
+  }
+
+  function renderWeightChart() {
+    var points = Object.keys(appData.days)
+      .filter(function(k) { return appData.days[k].weight != null; })
+      .sort()
+      .map(function(k) { return { date: k, weight: dispW(appData.days[k].weight) }; });
+    drawTrendChart('weightChart', 'weightChartEmpty', points, 'weight');
+  }
+
+  function renderCalorieChart() {
+    var points = Object.keys(appData.days)
+      .filter(function(k) { return appData.days[k].entries && appData.days[k].entries.length > 0; })
+      .sort()
+      .map(function(k) {
+        var cals = appData.days[k].entries.reduce(function(s, e) { return s + e.cals; }, 0);
+        return { date: k, cals: cals };
+      });
+    drawTrendChart('calorieChart', 'calorieChartEmpty', points, 'cals');
+  }
+
+  function renderDay() {
+    document.getElementById('dateLabel').textContent = displayDate(currentDate);
+    var key = currentKey();
+    var rec = dayRecord(appData, key);
+    var ns = netSteps(rec);
+    var stepWeightLb = rec.weight != null ? rec.weight : mostRecentWeight(appData, key);
+    var stepCals = calsFromNetSteps(ns, stepWeightLb);
+
+    // Food
+    var totalCals = rec.entries.reduce(function(s, e) { return s + e.cals; }, 0);
+    var burnedToday = rec.workouts.reduce(function(s, w) { return s + w.burned; }, 0) + stepCals;
+    document.getElementById('totalCals').textContent = totalCals.toLocaleString();
+    document.getElementById('netCals').textContent = (totalCals - burnedToday).toLocaleString();
+    var goal = appData.goal;
+    var bar = document.getElementById('progressBar');
+    bar.style.width = (goal && goal > 0) ? Math.min(100, round((totalCals / goal) * 100)) + '%' : '0%';
+    document.getElementById('goalInput').value = goal || '';
+    renderCalorieChart();
+
+    var foodList = document.getElementById('foodList');
+    foodList.innerHTML = '';
+    document.getElementById('foodEmpty').classList.toggle('hidden', rec.entries.length > 0);
+    rec.entries.forEach(function(entry, idx) {
+      var macroBits = [];
+      if (entry.protein != null) macroBits.push(entry.protein + 'g P');
+      if (entry.carbs != null) macroBits.push(entry.carbs + 'g C');
+      if (entry.fat != null) macroBits.push(entry.fat + 'g F');
+      var div = document.createElement('div');
+      div.className = 'entry';
+      div.innerHTML =
+        '<div><div>' + escapeHtml(entry.food) + '</div>' +
+        (macroBits.length ? '<div class="meta">' + macroBits.join(' \u00b7 ') + '</div>' : '') + '</div>' +
+        '<div class="right"><span class="cals">' + entry.cals + ' cal</span>' +
+        '<button class="delBtn editBtn" data-idx="' + idx + '" aria-label="Edit" style="border:none;background:none;color:var(--ink-faint);cursor:pointer;font-size:15px;padding:8px;min-width:32px;min-height:32px;display:inline-flex;align-items:center;justify-content:center;">&#9998;</button>' +
+        '<button class="delBtn" data-idx="' + idx + '" aria-label="Delete">&times;</button></div>';
+      foodList.appendChild(div);
+    });
+    foodList.querySelectorAll('.editBtn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var idx = parseInt(btn.dataset.idx, 10);
+        var entry = rec.entries[idx];
+        editingFoodIdx = idx;
+        document.getElementById('foodInput').value = entry.food;
+        document.getElementById('calInput').value = entry.cals;
+        document.getElementById('proteinInput').value = entry.protein != null ? entry.protein : '';
+        document.getElementById('carbInput').value = entry.carbs != null ? entry.carbs : '';
+        document.getElementById('fatInput').value = entry.fat != null ? entry.fat : '';
+        if (entry.protein != null || entry.carbs != null || entry.fat != null) {
+          document.getElementById('macroFields').classList.remove('hidden');
+          document.getElementById('macroToggle').textContent = '\u2212 hide macros';
+        }
+        document.getElementById('addFoodHeading').textContent = 'Edit food';
+        document.getElementById('addFoodBtn').textContent = 'Update entry';
+        document.getElementById('cancelFoodEditBtn').classList.remove('hidden');
+        document.getElementById('foodInput').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+    foodList.querySelectorAll('.delBtn:not(.editBtn)').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var idx = parseInt(btn.dataset.idx, 10);
+        var removed = rec.entries[idx];
+        rec.entries.splice(idx, 1);
+        if (editingFoodIdx === idx) exitFoodEditMode();
+        saveAll(appData);
+        renderDay();
+        showUndoToast('Deleted \u201c' + removed.food + '\u201d', function() {
+          rec.entries.splice(idx, 0, removed);
+          saveAll(appData);
+          renderDay();
+        });
+      });
+    });
+
+    // Favorites
+    var favCard = document.getElementById('favoritesCard');
+    var favList = document.getElementById('favoritesList');
+    favCard.style.display = appData.favoriteFoods.length ? 'block' : 'none';
+    favList.innerHTML = '';
+    appData.favoriteFoods.forEach(function(fav, fidx) {
+      var chip = document.createElement('button');
+      chip.className = 'ghost';
+      chip.type = 'button';
+      chip.style.cssText = 'padding:7px 10px;font-size:13px;display:flex;align-items:center;gap:6px;';
+      chip.innerHTML = escapeHtml(fav.food) + ' <span style="color:var(--ink-faint);">' + fav.cals + ' cal</span> <span data-fidx="' + fidx + '" class="favRemove" style="margin-left:2px;padding:6px;color:var(--ink-faint);display:inline-block;">&times;</span>';
+      chip.addEventListener('click', function(e) {
+        if (e.target.classList.contains('favRemove')) return;
+        var newEntry = { food: fav.food, cals: fav.cals };
+        if (fav.protein != null) newEntry.protein = fav.protein;
+        if (fav.carbs != null) newEntry.carbs = fav.carbs;
+        if (fav.fat != null) newEntry.fat = fav.fat;
+        rec.entries.push(newEntry);
+        saveAll(appData);
+        renderDay();
+      });
+      favList.appendChild(chip);
+    });
+    favList.querySelectorAll('.favRemove').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        e.stopPropagation();
+        appData.favoriteFoods.splice(parseInt(el.dataset.fidx, 10), 1);
+        saveAll(appData);
+        renderDay();
+      });
+    });
+
+    // Weight
+    document.getElementById('weightInput').value = rec.weight != null ? dispW(rec.weight) : '';
+    document.getElementById('stepsInput').value = rec.steps != null ? rec.steps : '';
+    document.getElementById('goalWeightInput').value = appData.goalWeight != null ? dispW(appData.goalWeight) : '';
+    document.getElementById('goalDateInput').value = appData.goalDate || '';
+    var goalHint = document.getElementById('goalHint');
+    if (appData.goalWeight != null && appData.goalDate) {
+      var daysLeft = Math.ceil((new Date(appData.goalDate) - new Date(fmtDate(new Date()))) / 86400000);
+      goalHint.textContent = daysLeft >= 0
+        ? daysLeft + ' day' + (daysLeft === 1 ? '' : 's') + ' until your goal date.'
+        : 'Goal date has passed \u2014 update it whenever you\u2019re ready.';
+    } else {
+      goalHint.textContent = '';
+    }
+    var netStepsNum = document.getElementById('netStepsNum');
+    var netStepsCalsEl = document.getElementById('netStepsCals');
+    var netStepsHint = document.getElementById('netStepsHint');
+    netStepsCalsEl.textContent = stepWeightLb ? stepCals.toLocaleString() : '\u2014';
+    if (ns == null) {
+      netStepsNum.textContent = '\u2014';
+      netStepsHint.textContent = 'Enter today\u2019s total steps above to see this.';
+    } else if (ns.workoutSteps > 0) {
+      netStepsNum.textContent = ns.net.toLocaleString();
+      netStepsHint.textContent = ns.raw.toLocaleString() + ' total \u2212 ~' + ns.workoutSteps.toLocaleString() + ' est. from your logged walk, so it isn\u2019t counted twice. Estimated burn uses your logged weight.';
+    } else {
+      netStepsNum.textContent = ns.raw.toLocaleString();
+      netStepsHint.textContent = 'No logged walking workout today, so this matches your total. Estimated burn uses your logged weight.';
+    }
+    var weightList = document.getElementById('weightList');
+    weightList.innerHTML = '';
+    var wKeys = Object.keys(appData.days).filter(function(k) { return appData.days[k].weight != null; }).sort().reverse().slice(0, 10);
+    document.getElementById('weightEmpty').classList.toggle('hidden', wKeys.length > 0);
+    wKeys.forEach(function(k) {
+      var div = document.createElement('div');
+      div.className = 'histRow';
+      var dayNs = netSteps(appData.days[k]);
+      var stepsBit = dayNs
+        ? ' \u00b7 ' + dayNs.net.toLocaleString() + ' steps' + (dayNs.workoutSteps > 0 ? ' (net)' : '')
+        : '';
+      div.innerHTML = '<span class="d">' + k + '</span><span>' + dispW(appData.days[k].weight) + ' ' + unitLabel() + stepsBit + '</span>';
+      weightList.appendChild(div);
+    });
+    renderWeightChart();
+
+    // Workouts
+    var workoutList = document.getElementById('workoutList');
+    workoutList.innerHTML = '';
+    document.getElementById('workoutEmpty').classList.toggle('hidden', rec.workouts.length > 0);
+    rec.workouts.forEach(function(w, idx) {
+      var div = document.createElement('div');
+      div.className = 'entry';
+      var exerciseLines = '';
+      if (w.exercises && w.exercises.length) {
+        exerciseLines = w.exercises.map(function(ex) {
+          return escapeHtml(ex.name) + ': ' + dispW(ex.weight) + ' ' + unitLabel() + ' \u00d7 ' + ex.sets + '\u00d7' + ex.reps;
+        }).join('<br>');
+      }
+      var canEdit = w.type.indexOf('spin') !== 0;
+      div.innerHTML =
+        '<div><div>' + LABELS[w.type] + '</div><div class="meta">' + w.duration + ' min' +
+          (w.avgResistance ? ' \u00b7 avg resistance ' + w.avgResistance + '/100 (' + w.segments.length + ' block' + (w.segments.length > 1 ? 's' : '') + ')' : '') +
+          (w.estimatedSteps ? ' \u00b7 ~' + w.estimatedSteps.toLocaleString() + ' est. steps' : '') +
+          (exerciseLines ? '<br>' + exerciseLines : '') +
+        '</div></div>' +
+        '<div class="right"><span class="cals">-' + w.burned + ' cal</span>' +
+        (canEdit ? '<button class="editWorkoutBtn" data-idx="' + idx + '" aria-label="Edit" style="border:none;background:none;color:var(--ink-faint);cursor:pointer;font-size:15px;padding:8px;min-width:32px;min-height:32px;display:inline-flex;align-items:center;justify-content:center;">&#9998;</button>' : '') +
+        '<button class="delWorkoutBtn" data-idx="' + idx + '" aria-label="Delete">&times;</button></div>';
+      workoutList.appendChild(div);
+    });
+    workoutList.querySelectorAll('.editWorkoutBtn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var idx = parseInt(btn.dataset.idx, 10);
+        var w = rec.workouts[idx];
+        editingWorkoutIdx = idx;
+        var typeSelect = document.getElementById('workoutType');
+        typeSelect.value = w.type;
+        typeSelect.dispatchEvent(new Event('change'));
+        document.getElementById('durationInput').value = w.duration;
+        document.getElementById('addWorkoutBtn').textContent = 'Update workout';
+        document.getElementById('cancelWorkoutEditBtn').classList.remove('hidden');
+        typeSelect.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+    workoutList.querySelectorAll('.delWorkoutBtn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var idx = parseInt(btn.dataset.idx, 10);
+        var removed = rec.workouts[idx];
+        rec.workouts.splice(idx, 1);
+        if (editingWorkoutIdx === idx) exitWorkoutEditMode();
+        saveAll(appData);
+        renderDay();
+        showUndoToast('Deleted ' + LABELS[removed.type], function() {
+          rec.workouts.splice(idx, 0, removed);
+          saveAll(appData);
+          renderDay();
+        });
+      });
+    });
+
+    renderHome(rec, totalCals, burnedToday, goal, ns);
+  }
+
+  function updateHomeDateTime() {
+    var el = document.getElementById('homeDateTime');
+    if (!el) return;
+    var now = new Date();
+    var dateStr = now.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
+    var timeStr = now.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+    el.textContent = dateStr + ' \u00b7 ' + timeStr;
+  }
+
+  function renderHome(rec, totalCals, burnedToday, goal, ns) {
+    updateHomeDateTime();
+    document.getElementById('homeMotivation').textContent = motivationForDate(new Date());
+
+    var streak = currentStreak();
+    var streakEl = document.getElementById('homeStreak');
+    if (streak.count === 0) {
+      streakEl.textContent = '';
+    } else {
+      streakEl.textContent = '\ud83d\udd25 ' + streak.count + '-day streak' + (streak.loggedToday ? '' : ' \u2014 log something today to keep it going');
+    }
+    renderExportStatus();
+
+    var netCalsVal = totalCals - burnedToday;
+    document.getElementById('homeCals').textContent = totalCals.toLocaleString();
+    document.getElementById('homeNetCals').textContent = netCalsVal.toLocaleString();
+    document.getElementById('homeBurned').textContent = burnedToday.toLocaleString();
+    var homeCalsLabelEl = document.getElementById('homeCalsLabel');
+    var homeCalBar = document.getElementById('homeCalBar');
+    if (goal) {
+      var diff = goal - netCalsVal;
+      homeCalsLabelEl.textContent = diff >= 0
+        ? diff.toLocaleString() + ' under your ' + goal.toLocaleString() + ' goal'
+        : Math.abs(diff).toLocaleString() + ' over your ' + goal.toLocaleString() + ' goal';
+      homeCalBar.style.width = Math.min(100, Math.max(0, round((netCalsVal / goal) * 100))) + '%';
+      homeCalBar.style.background = diff < 0 ? 'var(--danger)' : 'var(--accent)';
+    } else {
+      homeCalsLabelEl.textContent = 'no daily goal set (Food tab)';
+      homeCalBar.style.width = '0%';
+    }
+
+    var prevWeightKey = Object.keys(appData.days).filter(function(k) {
+      return appData.days[k].weight != null && k < currentKey();
+    }).sort().pop();
+    var homeWeightEl = document.getElementById('homeWeight');
+    var homeWeightLabel = document.getElementById('homeWeightLabel');
+    var currentWeight = mostRecentWeight(appData, currentKey());
+    if (rec.weight != null) {
+      homeWeightEl.textContent = dispW(rec.weight) + ' ' + unitLabel();
+      if (prevWeightKey) {
+        var diff = round((rec.weight - appData.days[prevWeightKey].weight) * 10) / 10;
+        homeWeightLabel.textContent = 'weight (' + (diff > 0 ? '+' : '') + dispW(diff) + ' ' + unitLabel() + ' vs last)';
+      } else {
+        homeWeightLabel.textContent = 'weight';
+      }
+    } else if (currentWeight != null) {
+      homeWeightEl.textContent = dispW(currentWeight) + ' ' + unitLabel();
+      homeWeightLabel.textContent = 'weight (most recent)';
+    } else {
+      homeWeightEl.textContent = '\u2014';
+      homeWeightLabel.textContent = 'weight (not logged yet)';
+    }
+
+    var homeGoalWeight = document.getElementById('homeGoalWeight');
+    var homeToGoal = document.getElementById('homeToGoal');
+    var homeToGoalLabel = document.getElementById('homeToGoalLabel');
+    var projectionEl = document.getElementById('homeProjection');
+    projectionEl.textContent = '';
+    if (appData.goalWeight != null) {
+      homeGoalWeight.textContent = dispW(appData.goalWeight) + ' ' + unitLabel();
+      var refWeight = rec.weight != null ? rec.weight : currentWeight;
+      if (refWeight != null) {
+        var toGoal = round((refWeight - appData.goalWeight) * 10) / 10;
+        homeToGoal.textContent = Math.abs(dispW(toGoal));
+        homeToGoalLabel.textContent = toGoal === 0 ? 'at goal weight' : (toGoal > 0 ? unitLabel() + ' to lose' : unitLabel() + ' to gain');
+
+        if (toGoal !== 0) {
+          var weighIns = Object.keys(appData.days)
+            .filter(function(k) { return appData.days[k].weight != null && k <= currentKey(); })
+            .sort();
+          var windowIns = weighIns.slice(-14); // use up to the last 14 weigh-ins for a stable trend
+          if (windowIns.length >= 2) {
+            var first = { date: windowIns[0], weight: appData.days[windowIns[0]].weight };
+            var last = { date: windowIns[windowIns.length - 1], weight: appData.days[windowIns[windowIns.length - 1]].weight };
+            var daySpan = (new Date(last.date) - new Date(first.date)) / 86400000;
+            var weightChange = last.weight - first.weight;
+            if (daySpan > 0 && weightChange !== 0) {
+              var perDay = weightChange / daySpan;
+              var movingTowardGoal = (toGoal > 0 && perDay < 0) || (toGoal < 0 && perDay > 0);
+              if (movingTowardGoal) {
+                var daysToGoal = Math.ceil(Math.abs(toGoal) / Math.abs(perDay));
+                var projDate = new Date();
+                projDate.setDate(projDate.getDate() + daysToGoal);
+                var perWeek = Math.abs(dispW(round(perDay * 7 * 10) / 10));
+                projectionEl.textContent = 'At your recent pace (~' + perWeek + ' ' + unitLabel() + '/week), you\u2019re projected to hit your goal around ' +
+                  projDate.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) + '.';
+              } else {
+                projectionEl.textContent = 'Your recent trend is moving away from your goal \u2014 no projection to show yet.';
+              }
+            } else {
+              projectionEl.textContent = 'Log a few more weigh-ins to see a pace projection.';
+            }
+          } else {
+            projectionEl.textContent = 'Log a few more weigh-ins to see a pace projection.';
+          }
+        }
+      } else {
+        homeToGoal.textContent = '\u2014';
+        homeToGoalLabel.textContent = unitLabel() + ' to goal';
+      }
+    } else {
+      homeGoalWeight.textContent = '\u2014';
+      homeToGoal.textContent = '\u2014';
+      homeToGoalLabel.textContent = unitLabel() + ' to goal';
+      projectionEl.textContent = 'Set a goal weight on the Weight tab to see your progress here.';
+    }
+
+    var homeSteps = document.getElementById('homeSteps');
+    homeSteps.textContent = ns != null ? ns.net.toLocaleString() : '\u2014';
+
+    var summary = document.getElementById('homeWorkoutSummary');
+    var summaryLines = rec.workouts.map(function(w) {
+      return LABELS[w.type] + ' \u2014 ' + w.duration + ' min, ' + w.burned + ' cal';
+    });
+    var homeStepWeight = rec.weight != null ? rec.weight : mostRecentWeight(appData, currentKey());
+    var homeStepCals = calsFromNetSteps(ns, homeStepWeight);
+    if (homeStepCals > 0) {
+      summaryLines.push('Steps today \u2014 est. ' + homeStepCals + ' cal');
+    }
+    summary.innerHTML = summaryLines.length ? summaryLines.join('<br>') : 'No workout logged yet today.';
+
+    var planLine = document.getElementById('homePlanLine');
+    var logPlanBtn = document.getElementById('homeLogPlanBtn');
+    var plan = todayPlanEntry();
+    if (plan.kind === 'rest') {
+      planLine.textContent = 'Rest day on your plan.';
+      logPlanBtn.classList.add('hidden');
+    } else if (plan.kind === 'routine') {
+      var routine = routineById(plan.routineId);
+      planLine.textContent = routine ? 'Planned: ' + routine.name : '';
+      logPlanBtn.classList.toggle('hidden', rec.workouts.length > 0 || !routine);
+    } else if (plan.kind === 'cardio') {
+      planLine.textContent = 'Planned: ' + LABELS[plan.type];
+      logPlanBtn.classList.toggle('hidden', rec.workouts.length > 0);
+    } else {
+      planLine.textContent = '';
+      logPlanBtn.classList.add('hidden');
+    }
+
+    var wk = weekSummary();
+    document.getElementById('weekWorkouts').textContent = wk.completed + ' / ' + wk.planned;
+    document.getElementById('weekAvgCals').textContent = wk.avgCals != null ? wk.avgCals.toLocaleString() : '\u2014';
+    document.getElementById('weekAvgCalsLabel').textContent = goal
+      ? 'avg calories logged (goal ' + goal.toLocaleString() + ')'
+      : 'avg calories logged';
+    document.getElementById('weekTotalCals').textContent = wk.totalCals.toLocaleString();
+    document.getElementById('weekTotalBurned').textContent = wk.totalBurned.toLocaleString();
+  }
+
+  var CARDIO_PLAN_TYPES = ['walking', 'road_easy', 'road_moderate', 'road_vigorous', 'spin'];
+  function todayPlanEntry() {
+    return appData.weeklyPlan[new Date().getDay()] || { kind: 'rest' };
+  }
+  function routineById(id) {
+    return appData.routines.find(function(r) { return r.id === id; });
+  }
+  function weekSummary() {
+    // Calendar week, Monday start, counting only through today.
+    var today = new Date();
+    var jsDay = today.getDay(); // 0=Sun..6=Sat
+    var offsetFromMonday = jsDay === 0 ? 6 : jsDay - 1;
+    var monday = new Date(today);
+    monday.setDate(monday.getDate() - offsetFromMonday);
+
+    var planned = 0, completed = 0;
+    var calSum = 0, calDayCount = 0;
+    var burnedSum = 0;
+    for (var i = 0; i <= offsetFromMonday; i++) {
+      var d = new Date(monday);
+      d.setDate(d.getDate() + i);
+      var key = fmtDate(d);
+      var dow = d.getDay();
+      var planEntry = appData.weeklyPlan[dow] || { kind: 'rest' };
+      var rec = appData.days[key];
+      if (planEntry.kind !== 'rest') {
+        planned++;
+        if (rec && rec.workouts && rec.workouts.length > 0) completed++;
+      }
+      if (rec && rec.entries && rec.entries.length > 0) {
+        calSum += rec.entries.reduce(function(s, e) { return s + e.cals; }, 0);
+        calDayCount++;
+      }
+      if (rec) {
+        var dayBurned = (rec.workouts || []).reduce(function(s, w) { return s + w.burned; }, 0);
+        var dayWeightLb = rec.weight != null ? rec.weight : mostRecentWeight(appData, key);
+        dayBurned += calsFromNetSteps(netSteps(rec), dayWeightLb);
+        burnedSum += dayBurned;
+      }
+    }
+    return {
+      planned: planned, completed: completed,
+      avgCals: calDayCount > 0 ? round(calSum / calDayCount) : null,
+      totalCals: calSum,
+      totalBurned: burnedSum
+    };
+  }
+  function renderPlan() {
+    var planList = document.getElementById('weeklyPlanList');
+    planList.innerHTML = '';
+    var dayDefs = [
+      { idx: 1, label: 'Monday' }, { idx: 2, label: 'Tuesday' }, { idx: 3, label: 'Wednesday' },
+      { idx: 4, label: 'Thursday' }, { idx: 5, label: 'Friday' }, { idx: 6, label: 'Saturday' }, { idx: 0, label: 'Sunday' }
+    ];
+    dayDefs.forEach(function(d) {
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:0.5px solid var(--line);';
+      var label = document.createElement('span');
+      label.textContent = d.label;
+      label.style.cssText = 'font-size:14px;min-width:82px;';
+      var select = document.createElement('select');
+      select.style.flex = '1';
+      var restOpt = document.createElement('option');
+      restOpt.value = 'rest'; restOpt.textContent = 'Rest';
+      select.appendChild(restOpt);
+      appData.routines.forEach(function(r) {
+        var opt = document.createElement('option');
+        opt.value = 'routine:' + r.id; opt.textContent = r.name;
+        select.appendChild(opt);
+      });
+      CARDIO_PLAN_TYPES.forEach(function(t) {
+        var opt = document.createElement('option');
+        opt.value = 'cardio:' + t; opt.textContent = LABELS[t];
+        select.appendChild(opt);
+      });
+      var current = appData.weeklyPlan[d.idx];
+      var currentVal = 'rest';
+      if (current) {
+        if (current.kind === 'routine') currentVal = 'routine:' + current.routineId;
+        else if (current.kind === 'cardio') currentVal = 'cardio:' + current.type;
+      }
+      select.value = currentVal;
+      select.addEventListener('change', function() {
+        var v = this.value;
+        if (v === 'rest') appData.weeklyPlan[d.idx] = { kind: 'rest' };
+        else if (v.indexOf('routine:') === 0) appData.weeklyPlan[d.idx] = { kind: 'routine', routineId: v.slice(8) };
+        else if (v.indexOf('cardio:') === 0) appData.weeklyPlan[d.idx] = { kind: 'cardio', type: v.slice(7) };
+        saveAll(appData);
+        renderDay();
+      });
+      row.appendChild(label);
+      row.appendChild(select);
+      planList.appendChild(row);
+    });
+
+    var routinesList = document.getElementById('routinesList');
+    routinesList.innerHTML = '';
+    appData.routines.forEach(function(r, ridx) {
+      var card = document.createElement('div');
+      card.style.cssText = 'margin-bottom:16px;padding-bottom:12px;border-bottom:0.5px solid var(--line);';
+      var header = document.createElement('div');
+      header.style.cssText = 'display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;';
+      header.innerHTML = '<span style="font-size:14px;font-weight:500;">' + escapeHtml(r.name) + '</span>' +
+        '<button class="delRoutineBtn" data-ridx="' + ridx + '" style="border:none;background:none;color:var(--ink-faint);cursor:pointer;font-size:12px;">Remove routine</button>';
+      card.appendChild(header);
+      var chipsWrap = document.createElement('div');
+      chipsWrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;';
+      r.exercises.forEach(function(exName, exIdx) {
+        var chip = document.createElement('span');
+        chip.style.cssText = 'font-size:12.5px;background:var(--surface-1);border-radius:14px;padding:5px 10px;display:inline-flex;align-items:center;gap:6px;';
+        chip.innerHTML = escapeHtml(exName) + ' <span class="removeExChip" data-ridx="' + ridx + '" data-exidx="' + exIdx + '" style="cursor:pointer;color:var(--ink-faint);">&times;</span>';
+        chipsWrap.appendChild(chip);
+      });
+      card.appendChild(chipsWrap);
+      var addRow = document.createElement('div');
+      addRow.style.cssText = 'display:flex;gap:6px;';
+      var input = document.createElement('input');
+      input.type = 'text'; input.placeholder = 'Add exercise'; input.style.flex = '1';
+      input.setAttribute('list', 'exerciseOptions');
+      var addBtn = document.createElement('button');
+      addBtn.className = 'ghost'; addBtn.type = 'button'; addBtn.textContent = 'Add';
+      addBtn.style.cssText = 'width:auto;padding:0 14px;';
+      addBtn.addEventListener('click', function() {
+        var val = input.value.trim();
+        if (!val) return;
+        r.exercises.push(val);
+        saveAll(appData);
+        renderPlan();
+      });
+      addRow.appendChild(input); addRow.appendChild(addBtn);
+      card.appendChild(addRow);
+      routinesList.appendChild(card);
+    });
+    routinesList.querySelectorAll('.removeExChip').forEach(function(el) {
+      el.addEventListener('click', function() {
+        var ridx = parseInt(el.dataset.ridx, 10), exidx = parseInt(el.dataset.exidx, 10);
+        appData.routines[ridx].exercises.splice(exidx, 1);
+        saveAll(appData);
+        renderPlan();
+      });
+    });
+    routinesList.querySelectorAll('.delRoutineBtn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var ridx = parseInt(btn.dataset.ridx, 10);
+        var removedId = appData.routines[ridx].id;
+        appData.routines.splice(ridx, 1);
+        Object.keys(appData.weeklyPlan).forEach(function(k) {
+          if (appData.weeklyPlan[k] && appData.weeklyPlan[k].kind === 'routine' && appData.weeklyPlan[k].routineId === removedId) {
+            appData.weeklyPlan[k] = { kind: 'rest' };
+          }
+        });
+        saveAll(appData);
+        renderPlan();
+        renderDay();
+      });
+    });
+
+    renderLibrary();
+    refreshPreloadRoutineOptions();
+  }
+  function renderLibrary() {
+    var catSelect = document.getElementById('libraryCategorySelect');
+    if (!catSelect.options.length) {
+      Object.keys(EXERCISE_LIBRARY).forEach(function(cat) {
+        var opt = document.createElement('option');
+        opt.value = cat; opt.textContent = cat;
+        catSelect.appendChild(opt);
+      });
+      catSelect.addEventListener('change', renderLibrary);
+    }
+    var cat = catSelect.value || Object.keys(EXERCISE_LIBRARY)[0];
+    var list = document.getElementById('libraryList');
+    list.innerHTML = '';
+    EXERCISE_LIBRARY[cat].forEach(function(name) {
+      var already = appData.exercises.indexOf(name) !== -1;
+      var chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'ghost';
+      chip.style.cssText = 'padding:6px 10px;font-size:12.5px;' + (already ? 'opacity:0.55;' : '');
+      chip.textContent = name + (already ? ' \u2713' : '');
+      chip.addEventListener('click', function() {
+        if (appData.exercises.indexOf(name) === -1) {
+          appData.exercises.push(name);
+          saveAll(appData);
+          refreshExerciseOptions();
+          showToast('Added \u201c' + name + '\u201d to your exercises');
+          renderLibrary();
+        }
+      });
+      list.appendChild(chip);
+    });
+  }
+  document.getElementById('addRoutineBtn').addEventListener('click', function() {
+    var nameEl = document.getElementById('newRoutineName');
+    var name = nameEl.value.trim();
+    if (!name) return;
+    appData.routines.push({ id: 'r' + Date.now(), name: name, exercises: [] });
+    saveAll(appData);
+    nameEl.value = '';
+    renderPlan();
+  });
+
+  function renderProgress() {
+    var select = document.getElementById('progressExerciseSelect');
+    var prevValue = select.value;
+    select.innerHTML = '';
+    appData.exercises.forEach(function(name) {
+      var opt = document.createElement('option');
+      opt.value = name;
+      opt.textContent = name;
+      select.appendChild(opt);
+    });
+    if (prevValue && appData.exercises.indexOf(prevValue) !== -1) select.value = prevValue;
+    renderProgressList();
+  }
+  function renderProgressList() {
+    var name = document.getElementById('progressExerciseSelect').value;
+    var list = document.getElementById('progressList');
+    list.innerHTML = '';
+    var logs = [];
+    Object.keys(appData.days).sort().reverse().forEach(function(k) {
+      var workouts = appData.days[k].workouts || [];
+      workouts.forEach(function(w) {
+        if (w.exercises) {
+          w.exercises.forEach(function(ex) {
+            if (ex.name === name) logs.push({ date: k, entry: ex });
+          });
+        }
+      });
+    });
+    document.getElementById('progressEmpty').classList.toggle('hidden', logs.length > 0);
+
+    var bestBox = document.getElementById('progressBest');
+    var best = bestForExercise(appData, name);
+    bestBox.innerHTML = best
+      ? '<div class="stat"><div class="num">' + dispW(best.entry.weight) + ' ' + unitLabel() + '</div><div class="label">' +
+        best.entry.sets + '\u00d7' + best.entry.reps + ' on ' + best.date + '</div></div>'
+      : '<p class="empty" style="padding:0;">No logs yet for this exercise.</p>';
+
+    logs.forEach(function(log) {
+      var div = document.createElement('div');
+      div.className = 'histRow';
+      var isBest = best && log.date === best.date && log.entry.weight === best.entry.weight;
+      div.innerHTML = '<span class="d">' + log.date + '</span><span>' +
+        dispW(log.entry.weight) + ' ' + unitLabel() + ' \u00d7 ' + log.entry.sets + '\u00d7' + log.entry.reps +
+        (isBest ? ' <span style="color:var(--accent);">\u2605 PB</span>' : '') + '</span>';
+      list.appendChild(div);
+    });
+  }
+  document.getElementById('progressExerciseSelect').addEventListener('change', renderProgressList);
+
+  function dayHasData(rec) {
+    return (rec.entries && rec.entries.length > 0) ||
+      (rec.workouts && rec.workouts.length > 0) ||
+      rec.weight != null ||
+      rec.steps != null;
+  }
+  function currentStreak() {
+    var todayKey = fmtDate(new Date());
+    var cursor = new Date();
+    var todayHasData = appData.days[todayKey] && dayHasData(appData.days[todayKey]);
+    if (!todayHasData) cursor.setDate(cursor.getDate() - 1);
+    var count = 0;
+    while (true) {
+      var key = fmtDate(cursor);
+      if (appData.days[key] && dayHasData(appData.days[key])) {
+        count++;
+        cursor.setDate(cursor.getDate() - 1);
+      } else {
+        break;
+      }
+    }
+    return { count: count, loggedToday: !!todayHasData };
+  }
+  function renderHistory() {
+    var list = document.getElementById('historyList');
+    list.innerHTML = '';
+    var rangeVal = document.getElementById('historyRangeSelect').value;
+    var allKeys = Object.keys(appData.days).filter(function(k) { return dayHasData(appData.days[k]); }).sort().reverse();
+    var keys = rangeVal === 'all' ? allKeys : allKeys.slice(0, parseInt(rangeVal, 10) || 14);
+    document.getElementById('historyEmpty').classList.toggle('hidden', keys.length > 0);
+    keys.forEach(function(k) {
+      var rec = appData.days[k];
+      var totalCals = rec.entries.reduce(function(s, e) { return s + e.cals; }, 0);
+      var burned = rec.workouts.reduce(function(s, w) { return s + w.burned; }, 0);
+      var bits = [totalCals + ' cal in'];
+      if (burned) bits.push(burned + ' burned');
+      if (rec.weight != null) bits.push(dispW(rec.weight) + ' ' + unitLabel());
+      var histNs = netSteps(rec);
+      if (histNs != null) bits.push(histNs.net.toLocaleString() + ' steps' + (histNs.workoutSteps > 0 ? ' (net)' : ''));
+      var div = document.createElement('div');
+      div.className = 'histRow';
+      div.innerHTML = '<span class="d">' + k + '</span><span>' + bits.join(' \u00b7 ') + '</span>';
+      list.appendChild(div);
+    });
+  }
+
+  applyTheme(currentTheme);
+  applyUnits(currentUnits, true);
+  syncWorkoutTypeFields(false);
+  refreshPreloadRoutineOptions();
+  renderSegments();
+  refreshExerciseOptions();
+  refreshFoodOptions();
+  renderExercises();
+  renderDay();
+  setInterval(updateHomeDateTime, 30000);
+  renderExportStatus();
+})();
+</script>
+</body>
+</html>
