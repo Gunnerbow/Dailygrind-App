@@ -405,6 +405,15 @@
       <canvas id="weightChart" style="width:100%;height:150px;display:block;"></canvas>
       <p class="empty hidden" id="weightChartEmpty">Log a few more weights to see a trend.</p>
     </div>
+    <div class="card" id="calorieNeedsCard">
+      <h2>Estimated calorie needs</h2>
+      <div class="secondaryRow" id="calorieNeedsRow">
+        <div class="secondaryStat"><div class="num" id="needsLose">&mdash;</div><div class="label">lose (~1 lb/wk)</div></div>
+        <div class="secondaryStat"><div class="num" id="needsMaintain">&mdash;</div><div class="label">maintain</div></div>
+        <div class="secondaryStat"><div class="num" id="needsGain">&mdash;</div><div class="label">gain (~0.5 lb/wk)</div></div>
+      </div>
+      <p style="font-size:12px;color:var(--ink-faint);margin:8px 0 0;" id="calorieNeedsDetail"></p>
+    </div>
     <div class="card">
       <h2>Weight history</h2>
       <div id="weightList"></div>
@@ -980,6 +989,50 @@
     if (weights.length < 2) return null;
     var sum = weights.reduce(function(s, w) { return s + w; }, 0);
     return { avg: Math.round((sum / weights.length) * 10) / 10, count: weights.length };
+  }
+  var CALS_PER_LB = 3500;
+  var MAINTENANCE_WINDOW_DAYS = 28;
+  var MAINTENANCE_MIN_DAYS = 14;
+  // Backs out an empirical daily maintenance calorie level from a trailing window
+  // of logged weight + food data: weight change over the window represents a
+  // known caloric surplus/deficit (~3500 cal/lb), so maintenance = average
+  // intake minus that implied daily deficit/surplus. Needs at least 14 days of
+  // BOTH weight and food logged (not necessarily the same days) within the
+  // trailing 28, and the earliest-to-latest weigh-in has to span at least 14
+  // days so the trend isn't just a couple of clustered readings.
+  function estimateMaintenance(anchorKey) {
+    var anchor = new Date(anchorKey + 'T00:00:00');
+    var keys = [];
+    for (var i = MAINTENANCE_WINDOW_DAYS - 1; i >= 0; i--) {
+      var d = new Date(anchor.getTime());
+      d.setDate(d.getDate() - i);
+      keys.push(fmtDate(d));
+    }
+    var weighKeys = keys.filter(function(k) { return appData.days[k] && appData.days[k].weight != null; });
+    var foodKeys = keys.filter(function(k) { return appData.days[k] && appData.days[k].entries && appData.days[k].entries.length > 0; });
+    if (weighKeys.length < MAINTENANCE_MIN_DAYS || foodKeys.length < MAINTENANCE_MIN_DAYS) {
+      return { ready: false, weighDays: weighKeys.length, foodDays: foodKeys.length, minDays: MAINTENANCE_MIN_DAYS };
+    }
+    var firstKey = weighKeys[0], lastKey = weighKeys[weighKeys.length - 1];
+    var spanDays = (new Date(lastKey + 'T00:00:00') - new Date(firstKey + 'T00:00:00')) / 86400000;
+    if (spanDays < MAINTENANCE_MIN_DAYS - 1) {
+      return { ready: false, weighDays: weighKeys.length, foodDays: foodKeys.length, minDays: MAINTENANCE_MIN_DAYS };
+    }
+    var weightChangeLb = appData.days[lastKey].weight - appData.days[firstKey].weight;
+    var totalCals = foodKeys.reduce(function(sum, k) {
+      return sum + appData.days[k].entries.reduce(function(s, e) { return s + e.cals; }, 0);
+    }, 0);
+    var avgIntake = totalCals / foodKeys.length;
+    var maintenance = avgIntake - (weightChangeLb * CALS_PER_LB / spanDays);
+    return {
+      ready: true,
+      maintenance: round(maintenance),
+      loseCals: round(maintenance - 500),
+      gainCals: round(maintenance + 300),
+      weighDays: weighKeys.length,
+      foodDays: foodKeys.length,
+      spanDays: Math.round(spanDays)
+    };
   }
   function displayDate(d) {
     var today = fmtDate(new Date());
@@ -2125,6 +2178,28 @@
     drawTrendChart('weightChart', 'weightChartEmpty', points, 'weight');
   }
 
+  function renderCalorieNeeds() {
+    var est = estimateMaintenance(currentKey());
+    var loseEl = document.getElementById('needsLose');
+    var maintainEl = document.getElementById('needsMaintain');
+    var gainEl = document.getElementById('needsGain');
+    var detailEl = document.getElementById('calorieNeedsDetail');
+    if (!est.ready) {
+      loseEl.textContent = '—';
+      maintainEl.textContent = '—';
+      gainEl.textContent = '—';
+      detailEl.textContent = 'Keep logging weight (' + est.weighDays + '/' + est.minDays + ' days so far) and food (' +
+        est.foodDays + '/' + est.minDays + ' days) — this unlocks once you have at least ' + est.minDays +
+        ' days of each, spread across roughly ' + est.minDays + ' days, within the last ' + MAINTENANCE_WINDOW_DAYS + '.';
+      return;
+    }
+    loseEl.textContent = est.loseCals;
+    maintainEl.textContent = est.maintenance;
+    gainEl.textContent = est.gainCals;
+    detailEl.textContent = 'Based on ' + est.weighDays + ' weigh-ins and ' + est.foodDays + ' logged food days over the last ' +
+      est.spanDays + ' days — an estimate that gets more accurate the more consistently you log.';
+  }
+
   function renderCalorieChart() {
     var points = Object.keys(appData.days)
       .filter(function(k) { return appData.days[k].entries && appData.days[k].entries.length > 0; })
@@ -2295,6 +2370,7 @@
       weightList.appendChild(div);
     });
     renderWeightChart();
+    renderCalorieNeeds();
 
     // Workouts
     var workoutList = document.getElementById('workoutList');
