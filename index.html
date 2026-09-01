@@ -3195,10 +3195,12 @@
     var calSum = 0, calDayCount = 0;
     var burnedSum = 0;
     var stepsSum = 0, stepsDayCount = 0;
-    // weekLatestWeight only ever picks up a weigh-in actually logged on one
-    // of this week's own elapsed days (Monday..today) -- see the weightChange
-    // note below for why this matters.
-    var weekLatestWeight = null;
+    // weekFirstWeight/weekLatestWeight are the earliest and most recent
+    // weigh-ins actually logged on one of this week's own elapsed days
+    // (Monday..today) -- see the weightChange note below for why the
+    // comparison is "first logged this week" rather than a pre-week baseline.
+    var weekFirstWeight = null, weekFirstIdx = null;
+    var weekLatestWeight = null, weekLatestIdx = null;
     // Workout planned/completed counts cover the FULL Mon-Sun week (so a
     // workout planned for a day later this week shows up in "planned" right
     // away, not just once that day arrives). Calories in/burned stay scoped
@@ -3230,20 +3232,23 @@
           stepsSum += dayNetSteps.net;
           stepsDayCount++;
         }
-        if (rec.weight != null) weekLatestWeight = rec.weight;
+        if (rec.weight != null) {
+          if (weekFirstWeight == null) { weekFirstWeight = rec.weight; weekFirstIdx = i; }
+          weekLatestWeight = rec.weight;
+          weekLatestIdx = i;
+        }
       }
     }
-    var beforeWeek = new Date(monday);
-    beforeWeek.setDate(beforeWeek.getDate() - 1);
-    var baselineWeight = mostRecentWeight(appData, fmtDate(beforeWeek));
-    // weightChange requires an actual weigh-in logged THIS week (weekLatestWeight)
-    // rather than just "whatever the most recent weigh-in ever was" -- without
-    // this, a user who hasn't stepped on the scale yet this week would see
-    // baselineWeight and the old mostRecentWeight(today) resolve to the exact
-    // same stale entry, silently showing "0.0" (looks like "no change") instead
-    // of "--" (no data yet this week). See the technical-orientation note.
-    var weightChange = (baselineWeight != null && weekLatestWeight != null)
-      ? Math.round((weekLatestWeight - baselineWeight) * 10) / 10 : null;
+    // weightChange compares your first weigh-in logged THIS week to your most
+    // recent one this week -- not a lookup against whatever was last known
+    // before the week started. That earlier pre-week-baseline approach could
+    // show a misleading number (including a coincidental "0.0") driven by a
+    // data point you never logged as part of this week at all. Requiring
+    // weekFirstIdx !== weekLatestIdx means a single weigh-in so far this week
+    // (nothing yet to compare it against) correctly shows "--", not a change
+    // of 0 against itself. See the technical-orientation note.
+    var weightChange = (weekFirstWeight != null && weekLatestIdx !== weekFirstIdx)
+      ? Math.round((weekLatestWeight - weekFirstWeight) * 10) / 10 : null;
     return {
       planned: planned, completed: completed,
       avgCals: calDayCount > 0 ? round(calSum / calDayCount) : null,
@@ -3266,9 +3271,12 @@
     var stepsSum = 0, stepsDayCount = 0;
     var burnedSum = 0;
     var workoutDays = 0;
-    // windowLatestWeight only picks up a weigh-in actually logged within this
-    // 30-day window -- see the weightChange note below.
-    var windowLatestWeight = null;
+    // windowFirstWeight/windowLatestWeight are the earliest and most recent
+    // weigh-ins actually logged within this 30-day window -- see the
+    // weightChange note below for why the comparison is "first logged in
+    // the window" rather than a pre-window baseline.
+    var windowFirstWeight = null, windowFirstIdx = null;
+    var windowLatestWeight = null, windowLatestIdx = null;
     for (var i = WINDOW - 1; i >= 0; i--) {
       var d = new Date(today);
       d.setDate(d.getDate() - i);
@@ -3289,19 +3297,22 @@
         stepsSum += dayNetSteps.net;
         stepsDayCount++;
       }
-      if (rec.weight != null) windowLatestWeight = rec.weight;
+      if (rec.weight != null) {
+        if (windowFirstWeight == null) { windowFirstWeight = rec.weight; windowFirstIdx = i; }
+        windowLatestWeight = rec.weight;
+        windowLatestIdx = i;
+      }
     }
-    var windowStart = new Date(today);
-    windowStart.setDate(windowStart.getDate() - (WINDOW - 1));
-    var beforeWindow = new Date(windowStart);
-    beforeWindow.setDate(beforeWindow.getDate() - 1);
-    var baselineWeight = mostRecentWeight(appData, fmtDate(beforeWindow));
-    // weightChange requires an actual weigh-in logged WITHIN this 30-day
-    // window (windowLatestWeight) -- same fix as weekSummary() above, so a
-    // stale weigh-in from before the window can't silently produce "0.0"
-    // when compared against itself. See the technical-orientation note.
-    var weightChange = (baselineWeight != null && windowLatestWeight != null)
-      ? Math.round((windowLatestWeight - baselineWeight) * 10) / 10 : null;
+    // weightChange compares your first weigh-in logged WITHIN this 30-day
+    // window to your most recent one in the window -- not a lookup against
+    // whatever was last known before the window started (which could produce
+    // a misleading number, including a coincidental "0.0", driven by a data
+    // point outside the window entirely). Requiring windowFirstIdx !==
+    // windowLatestIdx means a single weigh-in so far in the window (nothing
+    // yet to compare it against) correctly shows "--". See the
+    // technical-orientation note.
+    var weightChange = (windowFirstWeight != null && windowLatestIdx !== windowFirstIdx)
+      ? Math.round((windowLatestWeight - windowFirstWeight) * 10) / 10 : null;
     return {
       daysLogged: calDayCount,
       totalDays: WINDOW,
