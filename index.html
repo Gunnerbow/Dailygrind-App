@@ -3195,6 +3195,10 @@
     var calSum = 0, calDayCount = 0;
     var burnedSum = 0;
     var stepsSum = 0, stepsDayCount = 0;
+    // weekLatestWeight only ever picks up a weigh-in actually logged on one
+    // of this week's own elapsed days (Monday..today) -- see the weightChange
+    // note below for why this matters.
+    var weekLatestWeight = null;
     // Workout planned/completed counts cover the FULL Mon-Sun week (so a
     // workout planned for a day later this week shows up in "planned" right
     // away, not just once that day arrives). Calories in/burned stay scoped
@@ -3226,14 +3230,20 @@
           stepsSum += dayNetSteps.net;
           stepsDayCount++;
         }
+        if (rec.weight != null) weekLatestWeight = rec.weight;
       }
     }
     var beforeWeek = new Date(monday);
     beforeWeek.setDate(beforeWeek.getDate() - 1);
     var baselineWeight = mostRecentWeight(appData, fmtDate(beforeWeek));
-    var latestWeight = mostRecentWeight(appData, fmtDate(today));
-    var weightChange = (baselineWeight != null && latestWeight != null)
-      ? Math.round((latestWeight - baselineWeight) * 10) / 10 : null;
+    // weightChange requires an actual weigh-in logged THIS week (weekLatestWeight)
+    // rather than just "whatever the most recent weigh-in ever was" -- without
+    // this, a user who hasn't stepped on the scale yet this week would see
+    // baselineWeight and the old mostRecentWeight(today) resolve to the exact
+    // same stale entry, silently showing "0.0" (looks like "no change") instead
+    // of "--" (no data yet this week). See the technical-orientation note.
+    var weightChange = (baselineWeight != null && weekLatestWeight != null)
+      ? Math.round((weekLatestWeight - baselineWeight) * 10) / 10 : null;
     return {
       planned: planned, completed: completed,
       avgCals: calDayCount > 0 ? round(calSum / calDayCount) : null,
@@ -3256,7 +3266,10 @@
     var stepsSum = 0, stepsDayCount = 0;
     var burnedSum = 0;
     var workoutDays = 0;
-    for (var i = 0; i < WINDOW; i++) {
+    // windowLatestWeight only picks up a weigh-in actually logged within this
+    // 30-day window -- see the weightChange note below.
+    var windowLatestWeight = null;
+    for (var i = WINDOW - 1; i >= 0; i--) {
       var d = new Date(today);
       d.setDate(d.getDate() - i);
       var key = fmtDate(d);
@@ -3276,15 +3289,19 @@
         stepsSum += dayNetSteps.net;
         stepsDayCount++;
       }
+      if (rec.weight != null) windowLatestWeight = rec.weight;
     }
     var windowStart = new Date(today);
     windowStart.setDate(windowStart.getDate() - (WINDOW - 1));
     var beforeWindow = new Date(windowStart);
     beforeWindow.setDate(beforeWindow.getDate() - 1);
     var baselineWeight = mostRecentWeight(appData, fmtDate(beforeWindow));
-    var latestWeight = mostRecentWeight(appData, fmtDate(today));
-    var weightChange = (baselineWeight != null && latestWeight != null)
-      ? Math.round((latestWeight - baselineWeight) * 10) / 10 : null;
+    // weightChange requires an actual weigh-in logged WITHIN this 30-day
+    // window (windowLatestWeight) -- same fix as weekSummary() above, so a
+    // stale weigh-in from before the window can't silently produce "0.0"
+    // when compared against itself. See the technical-orientation note.
+    var weightChange = (baselineWeight != null && windowLatestWeight != null)
+      ? Math.round((windowLatestWeight - baselineWeight) * 10) / 10 : null;
     return {
       daysLogged: calDayCount,
       totalDays: WINDOW,
