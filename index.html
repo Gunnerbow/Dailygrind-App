@@ -147,6 +147,8 @@
   .bestBadge .num { font-family: var(--mono); font-size: 26px; font-weight: 700; color: var(--accent); }
   .bestBadge .star { margin-right: 2px; }
   .bestBadge .label { font-size: 12px; color: var(--ink-soft); margin-top: 4px; }
+  .bestBadge.badDirection { background: var(--danger-soft); }
+  .bestBadge.badDirection .num { color: var(--danger); }
 
   .bar { height: 7px; border-radius: 4px; background: var(--line); overflow: hidden; margin-top: 0.7rem; }
   .bar > div { height: 100%; background: var(--accent); transition: width 0.2s; }
@@ -302,13 +304,18 @@
         <div class="secondaryStat"><div class="num" id="homeCals">0</div><div class="label">in</div></div>
         <div class="secondaryStat"><div class="num" id="homeBurned">0</div><div class="label">burned</div></div>
         <div class="secondaryStat"><div class="num" id="homeWeight">&mdash;</div><div class="label" id="homeWeightLabel">weight</div></div>
-        <div class="secondaryStat"><div class="num" id="homeSteps">&mdash;</div><div class="label">net steps</div></div>
+        <div class="secondaryStat"><div class="num" id="homeSteps">&mdash;</div><div class="label">steps</div></div>
         <div class="secondaryStat"><div class="num" id="homeGoalWeight">&mdash;</div><div class="label">goal wt</div></div>
         <div class="secondaryStat"><div class="num" id="homeToGoal">&mdash;</div><div class="label" id="homeToGoalLabel">lb to goal</div></div>
       </div>
       <p style="font-size:12.5px;color:var(--ink-soft);margin:10px 0 0;" id="homeGoalDateHint"></p>
       <p style="font-size:12.5px;color:var(--ink-soft);margin:4px 0 0;" id="homeProjection"></p>
       <p style="font-size:12.5px;color:var(--ink-faint);margin:6px 0 0;display:none;" id="homeRollingAvg"></p>
+    </div>
+
+    <div class="card bestBadge hidden" id="allTimeCard">
+      <div class="num" id="allTimeChange">&mdash;</div>
+      <div class="label" id="allTimeLabel"></div>
     </div>
 
     <div class="card" id="macroSummaryCard">
@@ -540,7 +547,7 @@
       </div>
       <div class="field" id="simpleDurationField">
         <label class="small">Duration (minutes)</label>
-        <input type="number" id="durationInput" min="0" placeholder="45" />
+        <input type="text" id="durationInput" placeholder="45 or 23:32" />
       </div>
 
       <div class="field" id="swimmingFields" style="display:none;">
@@ -576,7 +583,7 @@
       <div id="segmentBuilder" style="display:none;">
         <div class="row2">
           <div class="field"><label class="small">Resistance (1&ndash;100)</label><input type="number" id="segResistance" min="1" max="100" placeholder="50" /></div>
-          <div class="field"><label class="small">Minutes at this level</label><input type="number" id="segMinutes" min="0" placeholder="20" /></div>
+          <div class="field"><label class="small">Minutes at this level</label><input type="text" id="segMinutes" placeholder="20 or 19:30" /></div>
         </div>
         <button class="ghost" id="addSegmentBtn" type="button">+ Add block</button>
         <div id="segmentList" style="margin-top:8px;"></div>
@@ -1332,6 +1339,18 @@
       return s + ((w.type === 'walking' || w.type === 'running') && w.estimatedSteps ? w.estimatedSteps : 0);
     }, 0);
   }
+  // Returns three related step figures for a day, each used for a different
+  // purpose — don't conflate them:
+  //   - raw: exactly what was typed into "Today's steps"
+  //   - workoutSteps: estimated steps from a logged walking/running workout
+  //   - net: raw minus workoutSteps (floored at 0) — used ONLY for the
+  //     calorie-burn estimate (calsFromNetSteps), so a logged walk's steps
+  //     aren't also credited as "extra" calorie-burning steps on top of the
+  //     workout's own calorie estimate.
+  // For a day's TOTAL step count shown anywhere in the UI (Home, History,
+  // the Weight tab's history list, the CSV export, and the weekly/30-day
+  // avg-steps tiles), use raw + workoutSteps instead — that's the actual
+  // number of steps taken, not steps-minus-double-counted-portion.
   function netSteps(rec) {
     if (rec.steps == null) return null;
     var workoutSteps = workoutStepsForDay(rec);
@@ -1344,6 +1363,33 @@
   }
   function round(n) { return Math.round(n); }
   function round1(n) { return Math.round(n * 10) / 10; }
+  // Every workout-duration field (the shared "Duration (minutes)" field used
+  // by strength/walking/hiking/swimming/road/rock-climbing, and the resistance-
+  // machine builder's "Minutes at this level" field) accepts either plain
+  // (decimal) minutes, e.g. "23.5", or mm:ss / h:mm:ss, e.g. "23:32". Duration
+  // is always stored internally as decimal minutes either way. Returns NaN for
+  // anything unparseable, including seconds >= 60, so the caller's existing
+  // "enter a valid duration" validation catches it.
+  function parseDurationMinutes(str) {
+    if (str == null) return NaN;
+    str = String(str).trim();
+    if (str === '') return NaN;
+    if (str.indexOf(':') !== -1) {
+      var parts = str.split(':').map(function(p) { return p.trim(); });
+      if (parts.length < 2 || parts.length > 3) return NaN;
+      var nums = parts.map(function(p) { return parseFloat(p); });
+      if (nums.some(function(n) { return isNaN(n); })) return NaN;
+      var hours = nums.length === 3 ? nums[0] : 0;
+      var minutes = nums.length === 3 ? nums[1] : nums[0];
+      var seconds = nums[nums.length - 1];
+      if (seconds < 0 || seconds >= 60) return NaN;
+      // Round to 2 decimal places -- mm:ss otherwise converts to a repeating
+      // decimal (23:32 -> 23.53333...) that would look messy wherever the
+      // duration is displayed back (segment rows, workout summaries, etc).
+      return Math.round((hours * 60 + minutes + seconds / 60) * 100) / 100;
+    }
+    return parseFloat(str);
+  }
   var toastTimeoutId = null;
   function showToast(msg) {
     var t = document.getElementById('toast');
@@ -1922,7 +1968,7 @@
     var rEl = document.getElementById('segResistance');
     var mEl = document.getElementById('segMinutes');
     var r = parseInt(rEl.value, 10);
-    var m = parseFloat(mEl.value);
+    var m = parseDurationMinutes(mEl.value);
     var err = document.getElementById('workoutError');
     if (isNaN(r) || r < 1 || r > 100 || isNaN(m) || m <= 0) {
       err.textContent = 'Enter a resistance level (1–100) and minutes greater than 0 for this block.';
@@ -2186,7 +2232,7 @@
       renderDay();
     } else {
       var durEl = document.getElementById('durationInput');
-      var duration = parseFloat(durEl.value);
+      var duration = parseDurationMinutes(durEl.value);
       if (isNaN(duration) || duration <= 0) {
         err.textContent = 'Enter a valid duration in minutes.';
         err.style.display = 'block';
@@ -2275,7 +2321,7 @@
     showToast('Export downloaded');
   });
   document.getElementById('exportCsvBtn').addEventListener('click', function() {
-    var rows = [['date', 'weight_lb', 'net_steps', 'calories_in', 'calories_burned', 'net_calories', 'protein_g', 'carbs_g', 'fat_g']];
+    var rows = [['date', 'weight_lb', 'total_steps', 'calories_in', 'calories_burned', 'net_calories', 'protein_g', 'carbs_g', 'fat_g']];
     Object.keys(appData.days).sort().forEach(function(k) {
       var dayRec = appData.days[k];
       if (!dayHasData(dayRec)) return;
@@ -2294,7 +2340,7 @@
       rows.push([
         k,
         dayRec.weight != null ? dayRec.weight : '',
-        nsRow != null ? nsRow.net : '',
+        nsRow != null ? (nsRow.raw + nsRow.workoutSteps) : '',
         totalCalsRow,
         burnedRow,
         totalCalsRow - burnedRow,
@@ -2798,7 +2844,7 @@
       div.className = 'histRow';
       var dayNs = netSteps(appData.days[k]);
       var metaHtml = dayNs
-        ? '<div class="meta">' + dayNs.net.toLocaleString() + ' steps' + (dayNs.workoutSteps > 0 ? ' (net)' : '') + '</div>'
+        ? '<div class="meta">' + (dayNs.raw + dayNs.workoutSteps).toLocaleString() + ' steps</div>'
         : '';
       div.innerHTML = '<div class="dCol"><span class="d">' + fmtHistDate(k) + '</span>' + metaHtml + '</div>' +
         '<span class="v">' + dispW(appData.days[k].weight) + ' ' + unitLabel() + '</span>';
@@ -3047,8 +3093,27 @@
       projectionEl.textContent = 'Set a goal weight on the Weight tab to see your progress here.';
     }
 
+    // All-time weight-change milestone badge: same goal-aware coloring
+    // convention as the week/30-day weight-change tiles (see
+    // weightChangeProgressClass) so a long-term trend moving the wrong way
+    // doesn't get shown in the same celebratory teal as genuine progress.
+    // Hidden entirely until there are at least two distinct weigh-ins ever
+    // logged -- nothing to show a "since you started" milestone against yet.
+    var allTimeCard = document.getElementById('allTimeCard');
+    var allTime = allTimeWeightSummary();
+    if (allTime) {
+      allTimeCard.classList.remove('hidden');
+      var atChange = dispW(allTime.change);
+      document.getElementById('allTimeChange').textContent = (atChange > 0 ? '+' : '') + atChange.toFixed(1) + ' ' + unitLabel();
+      document.getElementById('allTimeLabel').textContent = 'since your first weigh-in · ' + fmtHistDate(allTime.firstKey) +
+        ' (' + allTime.days + ' day' + (allTime.days === 1 ? '' : 's') + ')';
+      allTimeCard.classList.toggle('badDirection', weightChangeProgressClass(allTime.change) === 'badProgress');
+    } else {
+      allTimeCard.classList.add('hidden');
+    }
+
     var homeSteps = document.getElementById('homeSteps');
-    homeSteps.textContent = ns != null ? ns.net.toLocaleString() : '—';
+    homeSteps.textContent = ns != null ? (ns.raw + ns.workoutSteps).toLocaleString() : '—';
 
     var macroTotals = (rec.entries || []).reduce(function(acc, e) {
       if (e.protein != null) { acc.protein += e.protein; acc.logged = true; }
@@ -3230,7 +3295,7 @@
         dayBurned += calsFromNetSteps(dayNetSteps, dayWeightLb);
         burnedSum += dayBurned;
         if (dayNetSteps != null) {
-          stepsSum += dayNetSteps.net;
+          stepsSum += (dayNetSteps.raw + dayNetSteps.workoutSteps);
           stepsDayCount++;
         }
         if (rec.weight != null) {
@@ -3295,7 +3360,7 @@
       dayBurned += calsFromNetSteps(dayNetSteps, dayWeightLb);
       burnedSum += dayBurned;
       if (dayNetSteps != null) {
-        stepsSum += dayNetSteps.net;
+        stepsSum += (dayNetSteps.raw + dayNetSteps.workoutSteps);
         stepsDayCount++;
       }
       if (rec.weight != null) {
@@ -3323,6 +3388,22 @@
       totalBurned: burnedSum,
       weightChange: weightChange
     };
+  }
+  // All-time weight-change milestone for Home's badge card: compares your
+  // very first ever logged weigh-in to your most recent one, with "days"
+  // measured from that first weigh-in through today (not through the latest
+  // weigh-in) so it reads as "how long you've been at this," matching the
+  // "X days tracked" framing rather than the span between two data points.
+  // Returns null until there are at least two distinct days with a weigh-in
+  // logged -- a single weigh-in has nothing to compare against yet.
+  function allTimeWeightSummary() {
+    var keys = Object.keys(appData.days).filter(function(k) { return appData.days[k].weight != null; }).sort();
+    if (keys.length < 2) return null;
+    var firstKey = keys[0];
+    var lastKey = keys[keys.length - 1];
+    var change = Math.round((appData.days[lastKey].weight - appData.days[firstKey].weight) * 10) / 10;
+    var days = Math.round((new Date(fmtDate(new Date()) + 'T00:00:00') - new Date(firstKey + 'T00:00:00')) / 86400000);
+    return { change: change, firstKey: firstKey, days: days };
   }
   // Which routine (by id, not index — indexes shift on delete) is currently
   // showing a rename input instead of its plain name, or null if none is.
@@ -3727,7 +3808,7 @@
       if (burned) metaBits.push(burned + ' burned');
       if (rec.weight != null) metaBits.push(dispW(rec.weight) + ' ' + unitLabel());
       var histNs = netSteps(rec);
-      if (histNs != null) metaBits.push(histNs.net.toLocaleString() + ' steps' + (histNs.workoutSteps > 0 ? ' (net)' : ''));
+      if (histNs != null) metaBits.push((histNs.raw + histNs.workoutSteps).toLocaleString() + ' steps');
       var row = document.createElement('div');
       row.className = 'histRow';
       row.innerHTML = '<div class="dCol"><span class="d">' + fmtHistDate(k) + '</span>' +
