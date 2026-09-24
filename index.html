@@ -655,6 +655,12 @@
           <option value="cardio:spin">Spin bike</option>
           <option value="cardio:elliptical">Elliptical</option>
           <option value="cardio:rowing">Rowing machine</option>
+          <option value="cardio:walking">Walking</option>
+          <option value="cardio:running">Running</option>
+          <option value="cardio:hiking">Hiking</option>
+          <option value="cardio:road">Road bike</option>
+          <option value="cardio:swimming">Swimming</option>
+          <option value="cardio:rock_climbing">Indoor rock climbing</option>
         </optgroup>
       </select>
     </div>
@@ -1341,16 +1347,25 @@
   }
   // Returns three related step figures for a day, each used for a different
   // purpose — don't conflate them:
-  //   - raw: exactly what was typed into "Today's steps"
+  //   - raw: exactly what was typed into "Today's steps" — a real end-of-day
+  //     pedometer/Health-app total, which ALREADY includes any steps from a
+  //     logged walking/running workout (the phone doesn't know which steps
+  //     were "a workout" vs. everyday walking, it just counts all of them).
   //   - workoutSteps: estimated steps from a logged walking/running workout
+  //     (duration-based estimate — see STEPS_PER_MIN_WALK/RUN).
   //   - net: raw minus workoutSteps (floored at 0) — used ONLY for the
   //     calorie-burn estimate (calsFromNetSteps), so a logged walk's steps
   //     aren't also credited as "extra" calorie-burning steps on top of the
   //     workout's own calorie estimate.
   // For a day's TOTAL step count shown anywhere in the UI (Home, History,
   // the Weight tab's history list, the CSV export, and the weekly/30-day
-  // avg-steps tiles), use raw + workoutSteps instead — that's the actual
-  // number of steps taken, not steps-minus-double-counted-portion.
+  // avg-steps tiles), use raw ALONE — it's already the whole day's total,
+  // so adding workoutSteps on top double-counts the workout's steps a
+  // second time. (A v2.6 round briefly did raw + workoutSteps here, on the
+  // mistaken assumption that a manually-entered step count excludes any
+  // workout already logged separately — reverted after real usage showed
+  // the entered number is a real pedometer total that already includes
+  // the workout.)
   function netSteps(rec) {
     if (rec.steps == null) return null;
     var workoutSteps = workoutStepsForDay(rec);
@@ -2340,7 +2355,7 @@
       rows.push([
         k,
         dayRec.weight != null ? dayRec.weight : '',
-        nsRow != null ? (nsRow.raw + nsRow.workoutSteps) : '',
+        nsRow != null ? nsRow.raw : '',
         totalCalsRow,
         burnedRow,
         totalCalsRow - burnedRow,
@@ -2844,7 +2859,7 @@
       div.className = 'histRow';
       var dayNs = netSteps(appData.days[k]);
       var metaHtml = dayNs
-        ? '<div class="meta">' + (dayNs.raw + dayNs.workoutSteps).toLocaleString() + ' steps</div>'
+        ? '<div class="meta">' + dayNs.raw.toLocaleString() + ' steps</div>'
         : '';
       div.innerHTML = '<div class="dCol"><span class="d">' + fmtHistDate(k) + '</span>' + metaHtml + '</div>' +
         '<span class="v">' + dispW(appData.days[k].weight) + ' ' + unitLabel() + '</span>';
@@ -3113,7 +3128,7 @@
     }
 
     var homeSteps = document.getElementById('homeSteps');
-    homeSteps.textContent = ns != null ? (ns.raw + ns.workoutSteps).toLocaleString() : '—';
+    homeSteps.textContent = ns != null ? ns.raw.toLocaleString() : '—';
 
     var macroTotals = (rec.entries || []).reduce(function(acc, e) {
       if (e.protein != null) { acc.protein += e.protein; acc.logged = true; }
@@ -3295,7 +3310,7 @@
         dayBurned += calsFromNetSteps(dayNetSteps, dayWeightLb);
         burnedSum += dayBurned;
         if (dayNetSteps != null) {
-          stepsSum += (dayNetSteps.raw + dayNetSteps.workoutSteps);
+          stepsSum += dayNetSteps.raw;
           stepsDayCount++;
         }
         if (rec.weight != null) {
@@ -3360,7 +3375,7 @@
       dayBurned += calsFromNetSteps(dayNetSteps, dayWeightLb);
       burnedSum += dayBurned;
       if (dayNetSteps != null) {
-        stepsSum += (dayNetSteps.raw + dayNetSteps.workoutSteps);
+        stepsSum += dayNetSteps.raw;
         stepsDayCount++;
       }
       if (rec.weight != null) {
@@ -3658,11 +3673,27 @@
     renderPlan();
   });
 
-  var CARDIO_PROGRESS_TYPES = ['spin', 'elliptical', 'rowing'];
+  var CARDIO_PROGRESS_TYPES = ['spin', 'elliptical', 'rowing', 'walking', 'running', 'hiking', 'road', 'swimming', 'rock_climbing'];
   // Spin's real effort signal is how hard a resistance you sustained, not how
   // long you rode — so its "best" tracks avg resistance instead of duration,
   // the way elliptical/rowing (where going longer is the natural benchmark) do.
-  var CARDIO_BEST_METRIC = { spin: 'resistance', elliptical: 'duration', rowing: 'duration' };
+  // The pace-based cardio types (walking/running/hiking/road/swimming) track
+  // farthest distance logged instead — mirroring spin's resistance metric,
+  // since distance (not just time spent) is the real effort signal for those.
+  // Indoor rock climbing has no distance/pace concept (flat MET, like the
+  // resistance machines), so it gets the same 'duration' metric as elliptical/
+  // rowing. Distance is an optional field on those workout types, so a session
+  // logged without it just doesn't count toward this stat -- same as any other
+  // optional-field handling elsewhere in the app.
+  var CARDIO_BEST_METRIC = {
+    spin: 'resistance', elliptical: 'duration', rowing: 'duration',
+    walking: 'distance', running: 'distance', hiking: 'distance', road: 'distance', swimming: 'distance',
+    rock_climbing: 'duration'
+  };
+  // Distance is logged in different units per type (see the Workout tab's
+  // distance field placeholders) -- miles for walking/running/hiking/road,
+  // meters for swimming.
+  var CARDIO_DISTANCE_UNIT = { walking: 'mi', running: 'mi', hiking: 'mi', road: 'mi', swimming: 'm' };
   function renderProgress() {
     var select = document.getElementById('progressExerciseSelect');
     var strengthGroup = document.getElementById('progressStrengthGroup');
@@ -3712,14 +3743,27 @@
       });
       document.getElementById('progressEmpty').classList.toggle('hidden', cardioLogs.length > 0);
 
+      var distUnit = CARDIO_DISTANCE_UNIT[cardioType];
       var cardioBest = null;
       cardioLogs.forEach(function(log) {
-        var val = metric === 'resistance' ? (log.entry.avgResistance || 0) : log.entry.duration;
+        var val;
+        if (metric === 'resistance') val = log.entry.avgResistance || 0;
+        else if (metric === 'distance') {
+          // Distance is optional on these workout types -- a session logged
+          // without it just doesn't count toward this stat, same as any
+          // other optional-field handling elsewhere in the app.
+          if (log.entry.distance == null) return;
+          val = log.entry.distance;
+        } else val = log.entry.duration;
         if (!cardioBest || val > cardioBest.val) cardioBest = { date: log.date, entry: log.entry, val: val };
       });
+      var bestValLabel = cardioBest
+        ? (metric === 'resistance' ? cardioBest.val + '/100' : metric === 'distance' ? cardioBest.val.toLocaleString() + ' ' + distUnit : cardioBest.val + ' min')
+        : '';
+      var bestSubLabel = metric === 'resistance' ? 'avg resistance' : metric === 'distance' ? 'farthest distance' : 'longest session';
       bestBox.innerHTML = cardioBest
-        ? '<div class="bestBadge"><div class="num"><span class="star">&#9733;</span>' + (metric === 'resistance' ? cardioBest.val + '/100' : cardioBest.val + ' min') + '</div><div class="label">' +
-          (metric === 'resistance' ? 'avg resistance' : 'longest session') + ' on ' + cardioBest.date + '</div></div>'
+        ? '<div class="bestBadge"><div class="num"><span class="star">&#9733;</span>' + bestValLabel + '</div><div class="label">' +
+          bestSubLabel + ' on ' + cardioBest.date + '</div></div>'
         : '<p class="empty" style="padding:0;">No logs yet for this workout.</p>';
 
       cardioLogs.forEach(function(log) {
@@ -3728,6 +3772,7 @@
         var isBest = cardioBest && log.entry === cardioBest.entry;
         var bits = [log.entry.duration + ' min'];
         if (log.entry.avgResistance) bits.push('avg resistance ' + log.entry.avgResistance + '/100');
+        if (log.entry.distance != null) bits.push(log.entry.distance.toLocaleString() + ' ' + distUnit);
         bits.push(log.entry.burned + ' cal');
         div.innerHTML = '<span class="d">' + log.date + '</span><span>' +
           bits.join(' · ') +
@@ -3808,7 +3853,7 @@
       if (burned) metaBits.push(burned + ' burned');
       if (rec.weight != null) metaBits.push(dispW(rec.weight) + ' ' + unitLabel());
       var histNs = netSteps(rec);
-      if (histNs != null) metaBits.push((histNs.raw + histNs.workoutSteps).toLocaleString() + ' steps');
+      if (histNs != null) metaBits.push(histNs.raw.toLocaleString() + ' steps');
       var row = document.createElement('div');
       row.className = 'histRow';
       row.innerHTML = '<div class="dCol"><span class="d">' + fmtHistDate(k) + '</span>' +
